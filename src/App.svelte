@@ -1,9 +1,8 @@
 <script>
-  import { afterUpdate, onMount} from 'svelte';
+  import { onMount} from 'svelte';
   import { csv } from "d3-fetch";
   import { select, selectAll} from 'd3-selection'; 
   import { max, sum,descending } from 'd3-array';
-  //import Dropdown from './lib/Dropdown.svelte';
   import Bars from './lib/Bars.svelte';
   import MultipleBars from './lib/MultipleBars.svelte';
     import LineChart from './lib/LineChart.svelte';
@@ -24,7 +23,6 @@ let activeSDG = '1';
 $: {
   imageCode = (Number(activeSDG) < 10)?'0'+activeSDG:activeSDG;
   activeColor = sdgColors[`sdg_${activeSDG}`];
- //console.log('activeColor',activeColor)
 }
 
 onMount(()=> {
@@ -165,7 +163,7 @@ function displayNumberContainer(indicator){
               <!---- LOOPING THROUGH INDICATORS --->
               {#each selectedSdgText.filter( d => d.Cible.split(' ')[0]== target) as indicator}
               <div class="row datadiv">
-                <div class="col-xs-12 col-md-6 offset-md-1 indicator-text" style="border-left: 2px solid {activeColor};">
+                <div class="col-xs-12 col-md-8 col-lg-7 offset-lg-1 indicator-text" style="border-left: 2px solid {activeColor};">
                   {sdgsData.filter( k => (k.indicator === indicator.indicateurId))[0].description}
                   <Tooltip
                     content = {displaySource(indicator.indicateurId)}
@@ -203,7 +201,7 @@ function displayNumberContainer(indicator){
                   {/if}
                 </div>
                 <!--- LATEST YEAR VALUE -->
-                <div class="col-xs-12 col-md-5 number-container">
+                <div class="col-xs-12 col-md-4 col-lg-4 number-container">
                   {#if displayNumberContainer(indicator)}
                     <div class="yearValue" style="background-color: {activeColor};">
                       <div class="year">{displayLatestValue(indicator)['key']}</div>

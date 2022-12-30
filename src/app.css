@@ -109,10 +109,10 @@ comparetext{
     font-weight: bold;
 }
 /* charts */
-.barChart, .lineChart{
+/*.barChart, .lineChart{
     width:auto;
     max-width: 440px;
-}
+}*/
 .tick text{
     font-size: 1.5em;
 }

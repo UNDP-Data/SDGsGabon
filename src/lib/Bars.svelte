@@ -2,6 +2,7 @@
     import { scaleLinear, scaleOrdinal } from 'd3-scale';
 	import { descending,max } from 'd3-array';
 	import { format } from 'd3-format';
+	import {wrapText} from './wrapText.js'
 	import Tooltip from './Tooltip.svelte'  
 	import BarRect from './BarRect.svelte';
 
@@ -17,6 +18,9 @@ let maxValue = 0;
 let compareItems, compareValue, compareDescription;
 let yBar;
 const barHeight = 30;
+let width, height;
+const margin = {'top':20,'right':110,'bottom':30,'left':170}
+const labelWidth = 26;//margin.left - 60;
 
 $: console.log('id',id)
 $: console.log('barchart data ---- ',data)
@@ -33,7 +37,7 @@ function yPosition(i){
 $: dataFiltered = data.filter(d => d.indicatorSetting != 'compare')
 $: sets = [... new Set(dataFiltered.map( d => d.set))]
 $: console.log('sets',sets)
-$: totalHeight = ((barHeight+5) * data.filter( d => (d.indicatorSetting != 'compare')).length) + sets.length * 30 + 80; 
+$: height = ((barHeight+5) * data.filter( d => (d.indicatorSetting != 'compare')).length) + sets.length * 30 + 80; 
 
 $: {
 	compareItems = data.filter(d => d.indicatorSetting == 'compare')
@@ -50,19 +54,25 @@ $: {
 	maxValue = 0;
 	data.forEach(d => { 
 		// to do : check if the same for all items
-		let newMax = d3.max(d.values, k => k.value)
-		maxValue = (maxValue > newMax)?maxValue:newMax;       
+		let newMax = d3.max(d.values, k => Number(k.value))
+		maxValue = (maxValue > newMax)? maxValue:newMax;       
 	})
 }
 
 $: hScale = d3.scaleLinear()
-        .range([0,170])
+        .range([0, width-margin.left-margin.right])
         .domain([0,maxValue])
 
+		function capFirst(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function createLabel(text){
+	return wrapText(capFirst(text), labelWidth)
+}
 </script>
-<div id="ind_{id.replaceAll('.','-')}" class="barChart">
-	<svg viewBox="0 0 440 {totalHeight}">
-		<g transform="translate(140,20)" class="bars">
+<div id="ind_{id.replaceAll('.','-')}" class="barChart" bind:clientWidth={width}>
+	<svg height="{height}" width="{width}">
+		<g transform = 'translate({margin.left},{margin.top})' class="bars">
 				{#each data.filter( d => (d.indicatorSetting != 'compare')) as barData,i}
 				<!--- group containing bar rect and text -->
 				<g transform="translate(0,{yPosition(i)})">
@@ -71,14 +81,17 @@ $: hScale = d3.scaleLinear()
 						width={hScale(Number(barData[latestValue.key].replace(',','.')))} 
 						style="fill: {color}"
 					></rect>
-					<text y="26" x="-8" text-anchor="end">{barData.description}</text>
+					<g transform="translate(-5,16)">
+						<text text-anchor="end" dominant-baseline="text-after-edge">{@html createLabel(barData.description)}</text>
+					</g>
 					<text class="barNumber" 
 						x="{hScale(Number(barData[latestValue.key].replace(',','.'))) + 5}" 
-						y="26" 
+						y="12" 
 						style="opacity: 1;"
-					>
+					>			
 					{barData[latestValue.key]}{barData.unit}
 					</text>
+
 				</g>
 				{/each}
 			{#if compareValue}
