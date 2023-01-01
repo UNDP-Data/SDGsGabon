@@ -3,8 +3,7 @@
 	import { descending,max } from 'd3-array';
 	import { format } from 'd3-format';
 	import {wrapText} from './wrapText.js'
-	import Tooltip from './Tooltip.svelte'  
-	import BarRect from './BarRect.svelte';
+	import IntersectionObserver from "svelte-intersection-observer";
 
     let d3 = { scaleLinear, scaleOrdinal, descending, format, max} // 
 
@@ -13,6 +12,8 @@ export let id;
 export let color;
 export let unit;
 export let latestValue;
+
+unit = (unit!='%')?` ${unit}`:unit;
 
 let maxValue = 0;
 let compareItems, compareValue, compareDescription;
@@ -86,7 +87,7 @@ function createLabel(text){
 					</g>
 					<text class="barNumber" 
 						x="{hScale(Number(barData[latestValue.key].replace(',','.'))) + 5}" 
-						y="12" 
+						y={barHeight - 1} 
 						style="opacity: 1;"
 					>			
 					{barData[latestValue.key]}{barData.unit}

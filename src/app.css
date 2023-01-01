@@ -1,8 +1,9 @@
 body{
     background-color: #f7f7f7;
 }
-h1{
+h1.main-title{
     padding: 30px 0;
+    font-size: 2em;
 }
 h5.subtitle{
     font-size: 1.2em;
@@ -16,11 +17,45 @@ h5.subtitle{
     background-color: #FFF;
     margin-bottom: 40px;
 }
-.sdgButton, .dropdown-toggle{
+.sdgButton, .undp-select {
     border-radius: 0px;
     margin-left: 10px;
     margin-bottom: 10px;
+    border: 2px solid #000;
+    color: #000;
+    background-color: #FFF;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.125rem;
+    margin: 0 10px 10px;
+    padding: 1rem 3.125rem 1rem 1rem;
+    position: relative;
+    text-transform: uppercase;
+    height: 3.25rem;
+    min-width: 380px;
+    width:auto;
 }
+
+  .undp-select:hover {
+    border: 2px solid #000 !important;
+    color: #000 !important;
+    background-color: #FFF !important;
+  }
+
+  .undp-select:after {
+    transform: translateY(-50%);
+    transition: all 200ms ease-in-out;
+    background: url(https://design.undp.org/static/media/chevron-down.16c97a3f.svg) no-repeat center center !important;
+    content: "";
+    float: right;
+    height: 13px;
+    position: absolute;
+    pointer-events: none;
+    right: 14px;
+    top: 50%;
+    width: 20px;
+  }
 .dropdown-menu{
     padding:0px;
     border-radius: 0px;
@@ -28,6 +63,7 @@ h5.subtitle{
     -webkit-box-shadow: -2px 1px 5px 0px rgba(153,153,153,0.75);
     -moz-box-shadow: -2px 1px 5px 0px rgba(153,153,153,0.75);
 }
+
 .dropdown-item{
     border-bottom: 1px #ccc solid;
     width: 100%;
@@ -113,6 +149,7 @@ comparetext{
     width:auto;
     max-width: 440px;
 }*/
+
 .tick text{
     font-size: 1.5em;
 }
@@ -121,20 +158,19 @@ comparetext{
 }
 .yAxis text{
     fill: #ccc;
-    font-family: 'Nunito Sans', sans-serif;
 }
 .xAxis text{
     font-size: 18px;
-    font-family: 'Nunito Sans', sans-serif;
 }
 .labels text{
     font-size: 20px;
     font-weight: bold;
-    font-family: 'Nunito Sans', sans-serif;
 }
 .bars text{
-    font-family: 'Nunito Sans', sans-serif;
     font-size: 14px;
+}
+.bars text.barNumber{
+    font-size: 18px;
 }
 .bar{
     opacity: .5;
@@ -144,7 +180,6 @@ comparetext{
 /* arrow bottom */
 .arrow_box_bottom {
     max-width: 400px;
-	font-family: 'Roboto', sans-serif;
 	position: absolute;
 	background: #000000;
 	color:#ccc;

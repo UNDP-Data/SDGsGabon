@@ -5,10 +5,9 @@
   import { max, sum,descending } from 'd3-array';
   import Bars from './lib/Bars.svelte';
   import MultipleBars from './lib/MultipleBars.svelte';
-    import LineChart from './lib/LineChart.svelte';
-    import Tooltip from './lib/Tooltip.svelte'
-  	import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'sveltestrap';
-
+  import LineChart from './lib/LineChart.svelte';
+  import Tooltip from './lib/Tooltip.svelte'
+  import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'sveltestrap';
 
 let dataLoaded =false;
 let first = true;
@@ -30,10 +29,10 @@ onMount(()=> {
   getData();
 });
 const getData = async() => {
-  if (first) {
+  /*if (first) {
     ////-- do something only the first time
     first=false;
-  }
+  }*/
   await Promise.all([
     d3.csv("data/ODDlist.csv"),
     d3.csv("data/SDGdata_cleaned.csv"),
@@ -79,7 +78,6 @@ function latestNumber(items){
   // considering first item which should be a general number (for whole country)
   // console.log('items',items.values)
     items.values.sort((a,b) => d3.descending(a.key, b.key))
-   // let value = items.values.find( d => Number(d.value) > 0)
     let value = items.values.find( d => d.value  !="")
     return value;
 }
@@ -90,6 +88,7 @@ function displayUnit(indicator){
   } catch(error){
     console.log('unit not found', indicator, error)
   }
+  unit = (unit!='%')?` ${unit}`:unit;
   return unit;
 }
 function displaySource(indicator){
@@ -118,12 +117,12 @@ function displayNumberContainer(indicator){
 <main>
 	<div class="container">
 		<header>
-			<h1>Objectifs de Développement Durable au Gabon</h1>
+			<h1 class="main-title">Objectifs de Développement Durable au Gabon</h1>
 			<div class="alert alert-warning" role="alert">
 				Essai 2, travaux en cours ! | Test 2, work in progress!
 			</div>
 			<Dropdown {isOpen} toggle={() => (isOpen = !isOpen)} size="lg">Sélectionnez ODD
-        <DropdownToggle caret>
+        <DropdownToggle class="undp-select">
 					<span class="selectedSDG">{ sdgs.filter(d => d.id == activeSDG)[0].name }<span>
         </DropdownToggle>
 				<DropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton1">

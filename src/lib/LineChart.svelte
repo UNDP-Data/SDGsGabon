@@ -6,6 +6,8 @@
 	import { axisBottom, axisLeft } from 'd3-axis';
 	import { line } from 'd3-shape';
 	import { onMount } from 'svelte';
+	import IntersectionObserver from "svelte-intersection-observer";
+  	import { fade } from "svelte/transition";
 
     let d3 = { scaleLinear, scaleOrdinal, ascending, format, max, min, extent,select,axisBottom,axisLeft,line} // 
 
