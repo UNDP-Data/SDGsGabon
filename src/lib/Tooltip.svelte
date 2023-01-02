@@ -5,6 +5,7 @@
 	export let content = '';
 	export let div;
     export let displayTooltip;
+    export let svg;
 
     //console.log('in tooltip',div)
 
@@ -23,9 +24,15 @@
 	}
 </script>
 {#if displayTooltip}
-<span on:mouseleave={mouseLeave} on:mousemove={mouseMove} >
-	<slot />
-</span>
+{#if svg}
+    <g on:mouseleave={mouseLeave} on:mousemove={mouseMove} >
+        <slot />
+    </g>
+{:else}
+    <span on:mouseleave={mouseLeave} on:mousemove={mouseMove} >
+        <slot />
+    </span>
+{/if}
 {:else}
     <slot />
 {/if}

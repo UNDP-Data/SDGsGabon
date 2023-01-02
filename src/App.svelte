@@ -8,7 +8,8 @@
   import LineChart from './lib/LineChart.svelte';
   import Tooltip from './lib/Tooltip.svelte'
   import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'sveltestrap';
-    import MultipleLines from './lib/MultipleLines.svelte';
+  import MultipleLines from './lib/MultipleLines.svelte';
+  import MultipleLinesDouble from './lib/MultipleLinesDouble.svelte';
 
 let dataLoaded =false;
 let first = true;
@@ -77,7 +78,6 @@ function latestNumber(items){
   // console.log('in latest Number',items)
   // sorting values
   // considering first item which should be a general number (for whole country)
-  // console.log('items',items.values)
     items.values.sort((a,b) => d3.descending(a.key, b.key))
     let value = items.values.find( d => d.value  !="")
     return value;
@@ -107,7 +107,7 @@ function displayNumberContainer(indicator){
     let indicatorData = sdgsData.filter( k => (k.indicator === indicator.indicateurId))
     return indicatorData.some(d => d.indicatorSetting === 'compare');
   }
-  else if (indicator.chart == "barGroup" || indicator.chart == "lineGroup"){
+  else if (indicator.chart == "barGroup" || indicator.chart == "lineGroup" || indicator.chart == 'lineGroupDouble'){
     return false;
   }
   else return true;
@@ -169,6 +169,7 @@ function displayNumberContainer(indicator){
                     content = {displaySource(indicator.indicateurId)}
                     div = {'tooltipDiv'}
                     displayTooltip= {true}
+                    svg ={false}
                     >
                   <span class="source" style="border-bottom: 2px solid {activeColor};"><br>(Source)</span>
                   </Tooltip>
@@ -187,18 +188,18 @@ function displayNumberContainer(indicator){
                       id = {indicator.indicateurId}
                       color = {activeColor}
                       unit ={displayUnit(indicator.indicateurId)}
-                      latestValue={latestNumber(sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title'))[0])}
+                      latestValue={latestNumber(sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title')&& (k.indicatorSetting!='hide'))[0])}
                       ></Bars>
                   {/if}
                   {#if indicator.chart == 'lineGroup'}
                   <MultipleLines
-                    data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title'))}
+                    data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting != 'hide'))}
                     id = {indicator.indicateurId}
                     color = {activeColor}
                     unit = {displayUnit(indicator.indicateurId)}
                   >
-                </MultipleLines>
-                {/if}
+                  </MultipleLines>
+                  {/if}
                   {#if indicator.chart == 'line'}
                     <LineChart
                       data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title'))[0].values}
@@ -208,13 +209,21 @@ function displayNumberContainer(indicator){
                     >
                     </LineChart>
                   {/if}
+                  {#if indicator.chart == 'lineGroupDouble'}
+                    <MultipleLinesDouble
+                      data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting != 'hide'))}
+                      id = {indicator.indicateurId}
+                      color = {activeColor}
+                    >
+                  </MultipleLinesDouble>
+                  {/if}
                 </div>
                 <!--- LATEST YEAR VALUE -->
                 <div class="col-xs-12 col-md-4 col-lg-4 number-container">
                   {#if displayNumberContainer(indicator)}
                     <div class="yearValue" style="background-color: {activeColor};">
                       <div class="year">{displayLatestValue(indicator)['key']}</div>
-                      <div class="value">{displayLatestValue(indicator)['value']}{displayUnit(indicator.indicateurId)}</div>
+                      <div class="{(displayLatestValue(indicator)['value'].toString().length < 6)?'value':'longValue'}">{displayLatestValue(indicator)['value']}{displayUnit(indicator.indicateurId)}</div>
                     </div>
                     {/if}
                   </div>
@@ -229,8 +238,6 @@ function displayNumberContainer(indicator){
 	</div>
 </main>
 {/if}
-<!--div class="tooltipDiv arrow_box" >
-</div-->
 <style>
 
 </style>

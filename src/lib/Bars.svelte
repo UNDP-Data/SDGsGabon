@@ -22,9 +22,10 @@ const barHeight = 30;
 let width, height;
 const margin = {'top':20,'right':110,'bottom':30,'left':170}
 const labelWidth = 24;//margin.left - 60;
+let dataFiltered;
 
-$: console.log('id',id)
-$: console.log('barchart data ---- ',data)
+//$: console.log('id',id)
+//$: console.log('barchart data ---- ',data)
 $: yBar = 15;
 //console.log('latestValue',latestValue)
 
@@ -37,7 +38,7 @@ function yPosition(i){
 }
 $: dataFiltered = data.filter(d => d.indicatorSetting != 'compare')
 $: sets = [... new Set(dataFiltered.map( d => d.set))]
-$: console.log('sets',sets)
+//$: console.log('sets',sets)
 $: height = ((barHeight+5) * data.filter( d => (d.indicatorSetting != 'compare')).length) + sets.length * 30 + 80; 
 
 $: {
@@ -64,7 +65,7 @@ $: hScale = d3.scaleLinear()
         .range([0, width-margin.left-margin.right])
         .domain([0,maxValue])
 
-		function capFirst(string) {
+function capFirst(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 function createLabel(text){
@@ -74,7 +75,7 @@ function createLabel(text){
 <div id="ind_{id.replaceAll('.','-')}" class="barChart" bind:clientWidth={width}>
 	<svg height="{height}" width="{width}">
 		<g transform = 'translate({margin.left},{margin.top})' class="bars">
-				{#each data.filter( d => (d.indicatorSetting != 'compare')) as barData,i}
+			{#each dataFiltered as barData,i}
 				<!--- group containing bar rect and text -->
 				<g transform="translate(0,{yPosition(i)})">
 					<rect class="bar" 
@@ -90,11 +91,11 @@ function createLabel(text){
 						y={barHeight - 1} 
 						style="opacity: 1;"
 					>			
-					{barData[latestValue.key]}{barData.unit}
+					{barData[latestValue.key]}{(barData.unit!='%')?' '+barData.unit: barData.unit}
 					</text>
 
 				</g>
-				{/each}
+			{/each}
 			{#if compareValue}
 				<line class="compareline" 
 					stroke-dasharray="2,2" 

@@ -2,10 +2,12 @@
     import { scaleLinear, scaleOrdinal } from 'd3-scale';
 	import { ascending, max, min, extent } from 'd3-array';
 	import { format } from 'd3-format';
-	import { select, selectAll} from 'd3-selection'; 
+	import { select } from 'd3-selection'; 
 	import { axisBottom, axisLeft } from 'd3-axis';
 	import { line } from 'd3-shape';
 	import { onMount } from 'svelte';
+	import Tooltip from './Tooltip.svelte'
+
 	import IntersectionObserver from "svelte-intersection-observer";
   	import { fade } from "svelte/transition";
 
@@ -14,27 +16,36 @@
 export let data;
 export let id;
 export let color;
-export let unit;
 
 //-----
-console.log('data in line',data)
+console.log('data in lines double',data)
 
 let mounted = false;
-const margin = {"top": 20, "right":70, "bottom":40, "left":70}
+const margin = {"top": 20, "right":100, "bottom":40, "left":70}
 let width, height = 270;
 let gx,gy;
 let dataFiltered;
-let minValue, maxValue;
+let maxValue;
+let maxLineValue, minLineValue;
 
-$: dataFiltered = data.sort( (a,b) => a.key - b.key ).filter(d=> d.value != ""); // using only years with values for the vis
-$: console.log('dataFiltered',dataFiltered)
+$: maxValue=0;
 
-$: domain = d3.extent(dataFiltered, d => {if (d.value !="") return Number(d.key)})
-$: maxValue = d3.max(dataFiltered, d => {if (d.value !="") return Number(d.value)})
-$: {
-	minValue = d3.min(dataFiltered, d => {if (d.value !="") return Number(d.value)})
-	minValue = (minValue < 0)?minValue:0
-}
+$: data.forEach((lineData) => {
+		// using only years with values for the vis
+		lineData.filteredValues = lineData.values.sort( (a,b) => a.key - b.key ).filter(d=> d.value != "")
+		// max
+		maxLineValue = d3.max(lineData.filteredValues, d => {if (d.value !="") return Number(d.value)})
+		maxValue = (maxLineValue > maxValue)?maxLineValue:maxValue;
+		// min
+		minLineValue = d3.min(lineData.filteredValues, d => {if (d.value !="") return Number(d.value)})
+		minValue = (minLineValue < minValue)?minLineValue:minValue;
+
+	})
+// assuming for the domain that the years with data
+// are the same for both lines
+$: domain = d3.extent(data[0].filteredValues, d => {if (d.value !="") return Number(d.key)})
+
+$: minValue = (minValue < 0)?minValue:0;
 
 $: x = d3.scaleLinear()
 	.range([0, width -  margin.right - margin.left])
@@ -48,7 +59,7 @@ $: xAxis = (g, x) => g
 	.call(d3.axisBottom(x)
 		.tickSize(6)
 		.tickPadding(7)
-		.tickValues(dataFiltered.map(d => {if (d.value != undefined) return Number(d.key)}))
+		.tickValues(data[0].filteredValues.map(d => d.key))
 		.tickFormat(d=> d.toFixed(0))
 	)
 	.call(g => g.select(".domain").remove());
@@ -85,19 +96,25 @@ $: if (mounted) gy.call(yAxis,y);
 	<svg height="{height}" width="{width}">
 		<g transform="translate({margin.left},{margin.top})">
 			<g transform="translate(0, {height-margin.top-margin.bottom})" class="xAxis" fill="none" font-size="10" text-anchor="middle">
-			<!-- line class='zeroLine' 
-				x1 = x(minValue)
-				x2 = x()
-				y1 = y()
-				y2 = y() ></line -->
 			</g>
 			<g class="yAxis" fill="none" font-size="10" text-anchor="end"></g>
-			<path fill="none" stroke="{color}" stroke-width="1.5" d={path(dataFiltered)}></path>
-			{#each dataFiltered as dot}
-			<g transform="translate({x(Number(dot.key))},{y(Number(dot.value))})">
-				<circle r="5" fill="{color}"></circle>
-				<text y="-10" text-anchor="middle" style="opacity: 1;">{dot.value}{unit}</text>
-			</g>
+			{#each data as lineData,j}
+				<path fill="none" stroke="{color}" opacity="{1-j/2}" stroke-width="1.5" d={path(lineData.filteredValues)}></path>
+				{#each lineData.filteredValues as dot, i}
+				<g transform="translate({x(Number(dot.key))},{y(Number(dot.value))})">
+					<Tooltip
+						content = {dot.value+data[j].unit}
+						div = {'tooltipDiv'}
+						displayTooltip= {true}
+						svg={true}
+                    >
+					<circle r="5" fill="{color}"></circle>
+					</Tooltip>
+					{#if i === lineData.filteredValues.length-1}
+						<text y=5 x=10 style="opacity: 1;">{data[j].description}</text>
+					{/if}
+				</g>
+				{/each}
 			{/each}
 		</g>
 	</svg>

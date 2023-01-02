@@ -1,7 +1,6 @@
 <script>
 	import LineChart from './LineChart.svelte';
 
-
 export let data;
 export let id;
 export let color;
