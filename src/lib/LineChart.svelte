@@ -18,7 +18,7 @@ export let unit;
 export let minValue;
 
 //-----
-data.sort((a,b) => d3.ascending(a.key, b.key))
+let sortedData = data.sort((a,b) => d3.ascending(a.key, b.key))
 
 let mounted = false;
 const margin = {"top": 20, "right":50, "bottom":40, "left":50}
@@ -45,7 +45,7 @@ $: xAxis = (g, x) => g
 		.tickSize(6)
 		//.tickSizeOuter(5)
 		.tickPadding(7)
-		.tickValues(data.map(d => {if (d.value != undefined) return Number(d.key)}))
+		.tickValues(sortedData.map(d => {if (d.value != undefined) return Number(d.key)}))
 		.tickFormat(d=> d.toFixed(0))
 	)
 	.call(g => g.select(".domain").remove());
@@ -54,7 +54,7 @@ $: path = d3.line()
             .x(function(d) { return x(d.key) })
             .y(function(d) { return y(d.value) })
 
-//console.log('tickvalues',data.map(d => {if (d.value != undefined) return Number(d.key)})) 
+//console.log('tickvalues',sortedData.map(d => {if (d.value != undefined) return Number(d.key)})) 
 $: yAxis = (g, y) => g
 	.call(d3.axisLeft(y)
 			.tickSizeOuter(0)
@@ -90,8 +90,8 @@ $: if (mounted) gy.call(yAxis,y);
 				y2 = y() ></line -->
 			</g>
 			<g class="yAxis" fill="none" font-size="10" text-anchor="end"></g>
-			<path fill="none" stroke="{color}" stroke-width="1.5" d={path(data.filter(d=> d.value != ""))}></path>
-			{#each data.filter(d=> d.value != "") as dot}
+			<path fill="none" stroke="{color}" stroke-width="1.5" d={path(sortedData.filter(d=> d.value != ""))}></path>
+			{#each sortedData.filter(d=> d.value != "") as dot}
 			<g transform="translate({x(Number(dot.key))},{y(Number(dot.value))})">
 				<circle r="5" fill="{color}"></circle>
 				<text y="-10" text-anchor="middle" style="opacity: 1;">{dot.value}{unit}</text>
