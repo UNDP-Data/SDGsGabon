@@ -8,6 +8,7 @@
   import LineChart from './lib/LineChart.svelte';
   import Tooltip from './lib/Tooltip.svelte'
   import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'sveltestrap';
+    import MultipleLines from './lib/MultipleLines.svelte';
 
 let dataLoaded =false;
 let first = true;
@@ -106,7 +107,7 @@ function displayNumberContainer(indicator){
     let indicatorData = sdgsData.filter( k => (k.indicator === indicator.indicateurId))
     return indicatorData.some(d => d.indicatorSetting === 'compare');
   }
-  else if (indicator.chart == "barGroup"){
+  else if (indicator.chart == "barGroup" || indicator.chart == "lineGroup"){
     return false;
   }
   else return true;
@@ -189,6 +190,15 @@ function displayNumberContainer(indicator){
                       latestValue={latestNumber(sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title'))[0])}
                       ></Bars>
                   {/if}
+                  {#if indicator.chart == 'lineGroup'}
+                  <MultipleLines
+                    data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title'))}
+                    id = {indicator.indicateurId}
+                    color = {activeColor}
+                    unit = {displayUnit(indicator.indicateurId)}
+                  >
+                </MultipleLines>
+                {/if}
                   {#if indicator.chart == 'line'}
                     <LineChart
                       data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title'))[0].values}

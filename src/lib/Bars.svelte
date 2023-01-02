@@ -21,7 +21,7 @@ let yBar;
 const barHeight = 30;
 let width, height;
 const margin = {'top':20,'right':110,'bottom':30,'left':170}
-const labelWidth = 26;//margin.left - 60;
+const labelWidth = 24;//margin.left - 60;
 
 $: console.log('id',id)
 $: console.log('barchart data ---- ',data)
@@ -104,8 +104,14 @@ function createLabel(text){
 					y2="{yBar + barHeight+10}">
 				</line>
 				<text class="comparetext" 
+					x="{hScale(Number(compareValue))-7}" 
+					y="20" style="font-size: 1.3em;"
+					text-anchor="end"
+					>{compareDescription}
+				</text>
+				<text class="comparetext" 
 					x="{hScale(Number(compareValue))+7}" 
-					y="20" style="font-size: 1.3em;">{compareDescription}: {compareValue}{unit}
+					y="20" style="font-size: 1.3em;">{compareValue}{unit}
 				</text>
 			{:else}
 				-
