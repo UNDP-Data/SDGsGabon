@@ -10,9 +10,9 @@
   import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'sveltestrap';
   import MultipleLines from './lib/MultipleLines.svelte';
   import MultipleLinesDouble from './lib/MultipleLinesDouble.svelte';
+  import List from './lib/List.svelte';
 
 let dataLoaded =false;
-let first = true;
 let isOpen= false;
 let d3 = { csv, select, selectAll,max, sum,descending};
 let sdgsText = [],sdgsData,sdgs,allTargets, selectedSdgText, sources;
@@ -31,10 +31,6 @@ onMount(()=> {
   getData();
 });
 const getData = async() => {
-  /*if (first) {
-    ////-- do something only the first time
-    first=false;
-  }*/
   await Promise.all([
     d3.csv("data/ODDlist.csv"),
     d3.csv("data/SDGdata_cleaned.csv"),
@@ -107,7 +103,7 @@ function displayNumberContainer(indicator){
     let indicatorData = sdgsData.filter( k => (k.indicator === indicator.indicateurId))
     return indicatorData.some(d => d.indicatorSetting === 'compare');
   }
-  else if (indicator.chart == "barGroup" || indicator.chart == "lineGroup" || indicator.chart == 'lineGroupDouble'){
+  else if (indicator.chart == "barGroup" || indicator.chart == "lineGroup" || indicator.chart == 'lineGroupDouble' || indicator.chart == 'list'){
     return false;
   }
   else return true;
@@ -119,9 +115,6 @@ function displayNumberContainer(indicator){
 	<div class="container">
 		<header>
 			<h1 class="main-title">Objectifs de Développement Durable au Gabon</h1>
-			<div class="alert alert-warning" role="alert">
-				Essai 2, travaux en cours ! | Test 2, work in progress!
-			</div>
 			<Dropdown {isOpen} toggle={() => (isOpen = !isOpen)} size="lg">Sélectionnez ODD
         <DropdownToggle class="undp-select">
 					<span class="selectedSDG">{ sdgs.filter(d => d.id == activeSDG)[0].name }<span>
@@ -152,7 +145,7 @@ function displayNumberContainer(indicator){
           </div>
           <div class="row">
             <div class="col sdgcontainer">
-              <!---- LOOPING THROUGH TARGETS --->
+              <!---- LOOPING THROUGH TARGETS (Cible = target) --->
               {#each allTargets.filter(d => d.split('.')[0] == activeSDG) as target}
               <!---- TARGET TITLE -->
               <div class="row indicatorsByTarget">
@@ -164,7 +157,9 @@ function displayNumberContainer(indicator){
               {#each selectedSdgText.filter( d => d.Cible.split(' ')[0]== target) as indicator}
               <div class="row datadiv">
                 <div class="col-xs-12 col-md-8 col-lg-7 offset-lg-1 indicator-text" style="border-left: 2px solid {activeColor};">
+                  <!--- indicator title -->
                   {sdgsData.filter( k => (k.indicator === indicator.indicateurId))[0].description}
+                  <!--- source with tooltip -->
                   <Tooltip
                     content = {displaySource(indicator.indicateurId)}
                     div = {'tooltipDiv'}
@@ -173,6 +168,7 @@ function displayNumberContainer(indicator){
                     >
                   <span class="source" style="border-bottom: 2px solid {activeColor};"><br>(Source)</span>
                   </Tooltip>
+                  <!---- charts -->
                   {#if indicator.chart == 'barGroup'}
                     <MultipleBars 
                       data={sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting!='hide'))}
@@ -181,8 +177,7 @@ function displayNumberContainer(indicator){
                       unit ={displayUnit(indicator.indicateurId)}
                       latestValue={latestNumber(sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.unit != 'subtitle'))[0])}
                       ></MultipleBars>
-                  {/if}
-                  {#if indicator.chart == 'bar'}
+                  {:else if indicator.chart == 'bar'}
                     <Bars 
                       data={sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting!='hide'))}
                       id = {indicator.indicateurId}
@@ -190,17 +185,15 @@ function displayNumberContainer(indicator){
                       unit ={displayUnit(indicator.indicateurId)}
                       latestValue={latestNumber(sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title')&& (k.indicatorSetting!='hide'))[0])}
                       ></Bars>
-                  {/if}
-                  {#if indicator.chart == 'lineGroup'}
-                  <MultipleLines
-                    data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting != 'hide'))}
-                    id = {indicator.indicateurId}
-                    color = {activeColor}
-                    unit = {displayUnit(indicator.indicateurId)}
-                  >
-                  </MultipleLines>
-                  {/if}
-                  {#if indicator.chart == 'line'}
+                  {:else if indicator.chart == 'lineGroup'}
+                    <MultipleLines
+                      data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting != 'hide'))}
+                      id = {indicator.indicateurId}
+                      color = {activeColor}
+                      unit = {displayUnit(indicator.indicateurId)}
+                    >
+                    </MultipleLines>
+                  {:else if indicator.chart == 'line'}
                     <LineChart
                       data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title'))[0].values}
                       id = {indicator.indicateurId}
@@ -208,14 +201,19 @@ function displayNumberContainer(indicator){
                       unit = {displayUnit(indicator.indicateurId)}
                     >
                     </LineChart>
-                  {/if}
-                  {#if indicator.chart == 'lineGroupDouble'}
+                  {:else if indicator.chart == 'lineGroupDouble'}
                     <MultipleLinesDouble
                       data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting != 'hide'))}
                       id = {indicator.indicateurId}
                       color = {activeColor}
                     >
                   </MultipleLinesDouble>
+                  {:else if indicator.chart == 'list'}
+                    <List 
+                    data={sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting!='hide'))}
+                    id = {indicator.indicateurId}
+                    color = {activeColor}
+                    ></List>
                   {/if}
                 </div>
                 <!--- LATEST YEAR VALUE -->

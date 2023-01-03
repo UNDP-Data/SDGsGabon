@@ -6,8 +6,9 @@
 	import { axisBottom, axisLeft } from 'd3-axis';
 	import { line } from 'd3-shape';
 	import { onMount } from 'svelte';
-	import IntersectionObserver from "svelte-intersection-observer";
-  	import { fade } from "svelte/transition";
+    import {tweened} from 'svelte/motion';
+    import IntersectionObserver from "svelte-intersection-observer";
+	import { cubicOut } from 'svelte/easing';
 
     let d3 = { scaleLinear, scaleOrdinal, ascending, format, max, min, extent,select,axisBottom,axisLeft,line} // 
 
@@ -17,7 +18,7 @@ export let color;
 export let unit;
 
 //-----
-console.log('data in line',data)
+//console.log('data in line',data)
 
 let mounted = false;
 const margin = {"top": 20, "right":70, "bottom":40, "left":70}
@@ -25,6 +26,7 @@ let width, height = 270;
 let gx,gy;
 let dataFiltered;
 let minValue, maxValue;
+let element;
 
 $: dataFiltered = data.sort( (a,b) => a.key - b.key ).filter(d=> d.value != ""); // using only years with values for the vis
 $: console.log('dataFiltered',dataFiltered)
@@ -80,6 +82,12 @@ onMount(async () => {
 $: if (mounted) gx.call(xAxis,x);
 $: if (mounted) gy.call(yAxis,y);
 
+const opacityProgress = tweened(0, {
+        duration: 500,
+        easing:cubicOut,
+        delay:500
+    })
+
 </script>
 <div id="ind_{id.replaceAll('.','-')}" class="lineChart" bind:clientWidth={width}>
 	<svg height="{height}" width="{width}">
@@ -94,10 +102,12 @@ $: if (mounted) gy.call(yAxis,y);
 			<g class="yAxis" fill="none" font-size="10" text-anchor="end"></g>
 			<path fill="none" stroke="{color}" stroke-width="1.5" d={path(dataFiltered)}></path>
 			{#each dataFiltered as dot}
-			<g transform="translate({x(Number(dot.key))},{y(Number(dot.value))})">
-				<circle r="5" fill="{color}"></circle>
+			<IntersectionObserver {element} on:intersect={ e => {if (e.detail.isIntersecting) opacityProgress.set(1)}}>
+			<g bind:this = {element} transform="translate({x(Number(dot.key))},{y(Number(dot.value))})" opacity={$opacityProgress}>
+				<circle r="5" fill="{color}" ></circle>
 				<text y="-10" text-anchor="middle" style="opacity: 1;">{dot.value}{unit}</text>
 			</g>
+		</IntersectionObserver>
 			{/each}
 		</g>
 	</svg>

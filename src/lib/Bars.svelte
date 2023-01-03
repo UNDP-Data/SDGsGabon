@@ -2,8 +2,8 @@
     import { scaleLinear, scaleOrdinal } from 'd3-scale';
 	import { descending,max } from 'd3-array';
 	import { format } from 'd3-format';
-	import {wrapText} from './wrapText.js'
-	import IntersectionObserver from "svelte-intersection-observer";
+	import {wrapText} from './wrapText.js';
+	import BarRect from './BarRect.svelte';
 
     let d3 = { scaleLinear, scaleOrdinal, descending, format, max} // 
 
@@ -33,7 +33,6 @@ function yPosition(i){
 	// check in data if not first element, if set is different from previous add additional pixels
 	if ((i > 0) && (sets.length > 0) && (dataFiltered[i].set != dataFiltered[i-1].set )) yBar += 60;
 	else yBar += barHeight+5;
-	//console.log('yBar',yBar, i)
 	return yBar;
 }
 $: dataFiltered = data.filter(d => d.indicatorSetting != 'compare')
@@ -78,11 +77,14 @@ function createLabel(text){
 			{#each dataFiltered as barData,i}
 				<!--- group containing bar rect and text -->
 				<g transform="translate(0,{yPosition(i)})">
-					<rect class="bar" 
-						height="{barHeight}" 
-						width={hScale(Number(barData[latestValue.key].replace(',','.')))} 
-						style="fill: {color}"
-					></rect>
+					<BarRect
+						xValue = 0
+						yValue = 0
+						rectClass="bar" 
+						heightValue="{barHeight}" 
+						widthValue={hScale(Number(barData[latestValue.key].replace(',','.')))} 
+						rectStyle="fill: {color}"
+					></BarRect>
 					<g transform="translate(-5,16)">
 						<text text-anchor="end" dominant-baseline="text-after-edge">{@html createLabel(barData.description)}</text>
 					</g>

@@ -6,7 +6,8 @@
 	import { axisBottom, axisLeft } from 'd3-axis';
 	import { line } from 'd3-shape';
 	import { onMount } from 'svelte';
-	import Tooltip from './Tooltip.svelte'
+	import Tooltip from './Tooltip.svelte';
+	import {wrapText} from './wrapText.js';
 
 	import IntersectionObserver from "svelte-intersection-observer";
   	import { fade } from "svelte/transition";
@@ -18,15 +19,16 @@ export let id;
 export let color;
 
 //-----
-console.log('data in lines double',data)
+$: console.log('data in lines double',data)
 
 let mounted = false;
 const margin = {"top": 20, "right":100, "bottom":40, "left":70}
 let width, height = 270;
 let gx,gy;
-let dataFiltered;
 let maxValue;
 let maxLineValue, minLineValue;
+let colors =  ['#fd9d24', '#3f7e44','#0a97d9'];
+let labelWidth =10;
 
 $: maxValue=0;
 
@@ -42,7 +44,7 @@ $: data.forEach((lineData) => {
 
 	})
 // assuming for the domain that the years with data
-// are the same for both lines
+// are the same for both lines, domain based on 1st item
 $: domain = d3.extent(data[0].filteredValues, d => {if (d.value !="") return Number(d.key)})
 
 $: minValue = (minValue < 0)?minValue:0;
@@ -91,6 +93,13 @@ onMount(async () => {
 $: if (mounted) gx.call(xAxis,x);
 $: if (mounted) gy.call(yAxis,y);
 
+function capFirst(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function createLabel(text){
+	return wrapText(capFirst(text), labelWidth)
+}
+
 </script>
 <div id="ind_{id.replaceAll('.','-')}" class="lineChart" bind:clientWidth={width}>
 	<svg height="{height}" width="{width}">
@@ -99,19 +108,23 @@ $: if (mounted) gy.call(yAxis,y);
 			</g>
 			<g class="yAxis" fill="none" font-size="10" text-anchor="end"></g>
 			{#each data as lineData,j}
-				<path fill="none" stroke="{color}" opacity="{1-j/2}" stroke-width="1.5" d={path(lineData.filteredValues)}></path>
+				<path fill="none" stroke="{colors[j]}" stroke-width="1.5" d={path(lineData.filteredValues)}></path>
 				{#each lineData.filteredValues as dot, i}
 				<g transform="translate({x(Number(dot.key))},{y(Number(dot.value))})">
 					<Tooltip
-						content = {dot.value+data[j].unit}
+						content = {lineData.description+": "+dot.value+data[j].unit}
 						div = {'tooltipDiv'}
 						displayTooltip= {true}
 						svg={true}
                     >
-					<circle r="5" fill="{color}"></circle>
+					<circle r="5" fill="{colors[j]}"></circle>
 					</Tooltip>
 					{#if i === lineData.filteredValues.length-1}
-						<text y=5 x=10 style="opacity: 1;">{data[j].description}</text>
+					<g transform="translate(15,6)">
+
+
+						<text style="opacity: 1;">{@html createLabel(data[j].description)}</text>
+					</g>
 					{/if}
 				</g>
 				{/each}
