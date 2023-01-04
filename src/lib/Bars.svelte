@@ -77,14 +77,22 @@ function createLabel(text){
 			{#each dataFiltered as barData,i}
 				<!--- group containing bar rect and text -->
 				<g transform="translate(0,{yPosition(i)})">
-					<BarRect
+					<rect
+						x = 0
+						y = 0
+						class="bar" 
+						height="{barHeight}" 
+						width={hScale(Number(barData[latestValue.key].replace(',','.')))} 
+						style="fill: {color}"
+					></rect>
+					<!-- BarRect
 						xValue = 0
 						yValue = 0
 						rectClass="bar" 
 						heightValue="{barHeight}" 
 						widthValue={hScale(Number(barData[latestValue.key].replace(',','.')))} 
 						rectStyle="fill: {color}"
-					></BarRect>
+					></BarRect-->
 					<g transform="translate(-5,16)">
 						<text text-anchor="end" dominant-baseline="text-after-edge">{@html createLabel(barData.description)}</text>
 					</g>

@@ -102,12 +102,13 @@ const opacityProgress = tweened(0, {
 			<g class="yAxis" fill="none" font-size="10" text-anchor="end"></g>
 			<path fill="none" stroke="{color}" stroke-width="1.5" d={path(dataFiltered)}></path>
 			{#each dataFiltered as dot}
-			<IntersectionObserver {element} on:intersect={ e => {if (e.detail.isIntersecting) opacityProgress.set(1)}}>
-			<g bind:this = {element} transform="translate({x(Number(dot.key))},{y(Number(dot.value))})" opacity={$opacityProgress}>
+			<!--IntersectionObserver {element} on:intersect={ e => {if (e.detail.isIntersecting) opacityProgress.set(1)}} -->
+			<!--g bind:this = {element} transform="translate({x(Number(dot.key))},{y(Number(dot.value))})" opacity={$opacityProgress} -->
+			<g bind:this = {element} transform="translate({x(Number(dot.key))},{y(Number(dot.value))})">
 				<circle r="5" fill="{color}" ></circle>
 				<text y="-10" text-anchor="middle" style="opacity: 1;">{dot.value}{unit}</text>
 			</g>
-		</IntersectionObserver>
+		<!-- IntersectionObserver> -->
 			{/each}
 		</g>
 	</svg>
