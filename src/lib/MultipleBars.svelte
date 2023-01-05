@@ -4,27 +4,29 @@
 export let data;
 export let id;
 export let color;
-export let unit;
 export let latestValue;
+export let subtitles;
 
 $: console.log('id',id)
 $: console.log('barchart group data ---- ',data)
-$: sets = [... new Set(data.map( d => d.set))]
+$: console.log('latestValue',latestValue)
+
+$: sets = [... new Set(data.map( d => d.groupe))]
 $: console.log('sets',sets)
+
 
 // add title
 // separate the data in sets
 
 </script>
 {#each sets as set}
-	{#if data.filter( k => (k.set === set) && (k.unit == 'subtitle')).length >0}
-		<h5 class="subtitle">{data.filter( k => (k.set === set) && (k.unit == 'subtitle'))[0].description}</h5>
+	{#if subtitles[set]}
+		<h5 class="subtitle">{subtitles[set]}</h5>
 	{/if}
 	<Bars 
-		data={data.filter( k => (k.set === set) && (k.unit != 'subtitle'))}
+		data={data.filter( k => (k.groupe === set))}
 		id = {id+'_'+set}
 		color = {color}
-		unit ={unit}
 		latestValue={latestValue}
 	></Bars>
 {/each}

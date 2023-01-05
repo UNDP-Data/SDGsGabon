@@ -15,6 +15,7 @@ export let data;
 export let id;
 export let color;
 export let unit;
+console.log('unit',unit)
 
 //-----
 console.log('data in line',data)

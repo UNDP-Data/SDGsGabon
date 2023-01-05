@@ -10,6 +10,8 @@
   import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'sveltestrap';
   import MultipleLines from './lib/MultipleLines.svelte';
   import MultipleLinesDouble from './lib/MultipleLinesDouble.svelte';
+  import List from './lib/List.svelte';
+  import sdgDataJson from './assets/GabonOddDonees.json';
 
 let dataLoaded =false;
 let first = true;
@@ -26,8 +28,27 @@ $: {
   activeColor = sdgColors[`sdg_${activeSDG}`];
 }
 
+for (const key in sdgDataJson){
+  sdgDataJson[key].forEach(target => {
+      target.indicateurs.forEach(indicator =>{
+        indicator.donees.forEach(data => {
+          //console.log('data',data)
+          let values =[]
+          for (const [key, value] of Object.entries(data.valeurs)) {
+              if (!isNaN(key)) values.push({'key':Number(key),'value':value })
+          }
+          data.values = values;
+          //console.log('values',values)
+        })
+      })
+  })
+}
+
 onMount(()=> {
   tooltip = d3.select('.tooltipDiv');
+  
+
+
   getData();
 });
 const getData = async() => {
@@ -64,22 +85,29 @@ $: if (sdgsText.length > 0) {
 };
 
 /// ---
-function displayLatestValue(d) {
-  let indicatorValues = sdgsData.filter( k => (k.indicator === d.indicateurId) && (k.unit != 'title'));
-  //console.log(indicatorValues, indicatorValues.length)
-  if (indicatorValues.length === 0) return {key:'-',value:'no value yet'};
+
+function displayLatestValue(indicator) {
+  //console.log('d in display latest value',indicator)
+  let dataFirst = indicator.donees[0] 
+  let yearsData = dataFirst.valeurs; /// using first value
+  let values = []
+  for (const [key, value] of Object.entries(yearsData)) {
+            if (!isNaN(key)) values.push({'key':Number(key),'value':value })
+        }
+  if (values.length === 0) return {key:'-',value:'no value yet'};
   else {
-      let latestValue = latestNumber(indicatorValues[0])
-      if (latestValue != undefined) return latestValue;
-      else return {key:'-',value:'-'};
+    values.sort((a,b) => d3.descending(a.key, b.key))
+    let value = values.find( d => d.value  !="")
+    if (value != undefined) return value;
+    else return {key:'-',value:'-'};
   }
 }
-function latestNumber(items){
-  // console.log('in latest Number',items)
+function latestNumber(indicator){
+   //console.log('in latest Number',indicator)
   // sorting values
   // considering first item which should be a general number (for whole country)
-    items.values.sort((a,b) => d3.descending(a.key, b.key))
-    let value = items.values.find( d => d.value  !="")
+    indicator.donees[0].values.sort((a,b) => d3.descending(a.key, b.key))
+    let value = indicator.donees[0].values.find( d => d.value  !="")
     return value;
 }
 function displayUnit(indicator){
@@ -87,27 +115,19 @@ function displayUnit(indicator){
   try {
     unit = sdgsData.filter( k => (k.indicator === indicator) && (k.unit != 'title') && (k.unit != 'subtitle'))[0].unit;
   } catch(error){
-    console.log('unit not found', indicator, error)
+    //console.log('unit not found', indicator, error)
   }
   unit = (unit!='%')?` ${unit}`:unit;
   return unit;
 }
-function displaySource(indicator){
-  let source ='';
-  try{
-    source = sources.filter( d => d.indicator == indicator)[0].source;
-  } catch(error){
-    console.log('source not found',indicator, error)
-  }
-  return source;
-}
+
 function displayNumberContainer(indicator){
-  //console.log('indicator chart --------',indicator.chart)
-  if (indicator.chart == 'bar'){
+  //console.log('indicator chart --------',indicator.groupe)
+  if (indicator.groupe == 'bar'){
     let indicatorData = sdgsData.filter( k => (k.indicator === indicator.indicateurId))
     return indicatorData.some(d => d.indicatorSetting === 'compare');
   }
-  else if (indicator.chart == "barGroup" || indicator.chart == "lineGroup" || indicator.chart == 'lineGroupDouble'){
+  else if (indicator.graphique == "barGroup" || indicator.graphique == "lineGroup" || indicator.graphique == 'lineGroupDouble' || indicator.graphique == 'list'){
     return false;
   }
   else return true;
@@ -152,70 +172,76 @@ function displayNumberContainer(indicator){
           </div>
           <div class="row">
             <div class="col sdgcontainer">
-              <!---- LOOPING THROUGH TARGETS --->
-              {#each allTargets.filter(d => d.split('.')[0] == activeSDG) as target}
+              <!---- LOOPING THROUGH TARGETS (Cible = target) --->
+              {#each sdgDataJson[activeSDG] as target}
               <!---- TARGET TITLE -->
+              {#if (target.indicateurs.filter(d => d.indicateurDisponible == 'Oui').length > 0) } 
               <div class="row indicatorsByTarget">
                 <div class="col target" style="border-top: medium none;">
-                  <h3>Cible {target}</h3>{selectedSdgText.filter( d => d.Cible.split(' ')[0]== target)[0].Cible.split(/ (.*)/s)[1]}
+                  <h3>Cible {target.codeCible}</h3>{target.cible}
                 </div>
               </div>
+              {/if}
               <!---- LOOPING THROUGH INDICATORS --->
-              {#each selectedSdgText.filter( d => d.Cible.split(' ')[0]== target) as indicator}
+              {#each target.indicateurs.filter(d => d.indicateurDisponible ==  'Oui') as indicator}
               <div class="row datadiv">
                 <div class="col-xs-12 col-md-8 col-lg-7 offset-lg-1 indicator-text" style="border-left: 2px solid {activeColor};">
-                  {sdgsData.filter( k => (k.indicator === indicator.indicateurId))[0].description}
+                  <!--- indicator title -->
+                  {indicator.indicateur}
+                  <!--- source with tooltip -->
                   <Tooltip
-                    content = {displaySource(indicator.indicateurId)}
+                    content = {indicator.source}
                     div = {'tooltipDiv'}
                     displayTooltip= {true}
                     svg ={false}
                     >
                   <span class="source" style="border-bottom: 2px solid {activeColor};"><br>(Source)</span>
                   </Tooltip>
-                  {#if indicator.chart == 'barGroup'}
+                  <!---- charts -->
+                  {#if indicator.graphique == 'barGroup'}
                     <MultipleBars 
-                      data={sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting!='hide'))}
-                      id = {indicator.indicateurId}
+                      data={indicator.donees.filter(d => d.parametre != 'hide')}
+                      id = {indicator.codeIndicateur}
                       color = {activeColor}
-                      unit ={displayUnit(indicator.indicateurId)}
-                      latestValue={latestNumber(sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.unit != 'subtitle'))[0])}
+                      latestValue={latestNumber(indicator)}
+                      subtitles= {indicator.titreGroupe}
                       ></MultipleBars>
-                  {/if}
-                  {#if indicator.chart == 'bar'}
+                  {:else if indicator.graphique == 'bar'}
                     <Bars 
-                      data={sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting!='hide'))}
-                      id = {indicator.indicateurId}
+                      data={indicator.donees.filter(d => d.parametre != 'hide')}
+                      id = {indicator.codeIndicateur}
                       color = {activeColor}
-                      unit ={displayUnit(indicator.indicateurId)}
-                      latestValue={latestNumber(sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title')&& (k.indicatorSetting!='hide'))[0])}
+                      latestValue={latestNumber(indicator)}
                       ></Bars>
-                  {/if}
-                  {#if indicator.chart == 'lineGroup'}
-                  <MultipleLines
-                    data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting != 'hide'))}
-                    id = {indicator.indicateurId}
-                    color = {activeColor}
-                    unit = {displayUnit(indicator.indicateurId)}
-                  >
-                  </MultipleLines>
-                  {/if}
-                  {#if indicator.chart == 'line'}
-                    <LineChart
-                      data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title'))[0].values}
+                  {:else if indicator.graphique == 'lineGroup'}
+                    <MultipleLines
+                      data= {indicator.donees.filter(d => d.parametre != 'hide')}
                       id = {indicator.indicateurId}
                       color = {activeColor}
-                      unit = {displayUnit(indicator.indicateurId)}
+                      unit = {indicator['donees'][0].unite}
+                    >
+                    </MultipleLines>
+                  {:else if indicator.graphique == 'line'}
+                    <LineChart
+                      data= {indicator['donees'][0].values}
+                      id = {indicator.codeIndicateur}
+                      color = {activeColor}
+                      unit = {indicator['donees'][0].unite}
                     >
                     </LineChart>
-                  {/if}
-                  {#if indicator.chart == 'lineGroupDouble'}
+                  {:else if indicator.graphique == 'lineGroupDouble'}
                     <MultipleLinesDouble
-                      data= {sdgsData.filter( k => (k.indicator === indicator.indicateurId) && (k.unit != 'title') && (k.indicatorSetting != 'hide'))}
-                      id = {indicator.indicateurId}
+                      data= {indicator['donees'].filter(d => d.parametre != 'hide')}
+                      id = {indicator.codeIndicateur}
                       color = {activeColor}
                     >
                   </MultipleLinesDouble>
+                  {:else if indicator.graphique == 'list'}
+                    <List 
+                    data={indicator.donees.filter(d => d.parametre != 'hide')}
+                    id = {indicator.codeIndicateur}
+                    color = {activeColor}
+                    ></List>
                   {/if}
                 </div>
                 <!--- LATEST YEAR VALUE -->
@@ -223,7 +249,7 @@ function displayNumberContainer(indicator){
                   {#if displayNumberContainer(indicator)}
                     <div class="yearValue" style="background-color: {activeColor};">
                       <div class="year">{displayLatestValue(indicator)['key']}</div>
-                      <div class="{(displayLatestValue(indicator)['value'].toString().length < 6)?'value':'longValue'}">{displayLatestValue(indicator)['value']}{displayUnit(indicator.indicateurId)}</div>
+                      <div class="{(displayLatestValue(indicator)['value'].toString().length < 6)?'value':'longValue'}">{displayLatestValue(indicator)['value']}{indicator.donees[0].unite}</div>
                     </div>
                     {/if}
                   </div>

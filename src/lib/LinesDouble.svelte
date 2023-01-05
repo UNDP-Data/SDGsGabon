@@ -31,6 +31,7 @@ let maxLineValue, minLineValue;
 $: maxValue=0;
 
 $: data.forEach((lineData) => {
+		console.log('lineData', lineData)
 		// using only years with values for the vis
 		lineData.filteredValues = lineData.values.sort( (a,b) => a.key - b.key ).filter(d=> d.value != "")
 		// max
@@ -103,7 +104,7 @@ $: if (mounted) gy.call(yAxis,y);
 				{#each lineData.filteredValues as dot, i}
 				<g transform="translate({x(Number(dot.key))},{y(Number(dot.value))})">
 					<Tooltip
-						content = {dot.value+data[j].unit}
+						content = {lineData.description+": "+dot.value+data[j].unite}
 						div = {'tooltipDiv'}
 						displayTooltip= {true}
 						svg={true}
