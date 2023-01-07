@@ -2,7 +2,7 @@
     import { scaleLinear, scaleOrdinal } from 'd3-scale';
 	import { ascending, max, min, extent } from 'd3-array';
 	import { format } from 'd3-format';
-	import { select, selectAll} from 'd3-selection'; 
+	import { select} from 'd3-selection'; 
 	import { axisBottom, axisLeft } from 'd3-axis';
 	import { line } from 'd3-shape';
 	import { onMount } from 'svelte';
@@ -16,6 +16,7 @@ export let data;
 export let id;
 export let color;
 export let unit;
+//console.log('id',id)
 
 //-----
 //console.log('data in line',data)
@@ -29,12 +30,11 @@ let minValue, maxValue;
 let element;
 
 $: dataFiltered = data.sort( (a,b) => a.key - b.key ).filter(d=> d.value != ""); // using only years with values for the vis
-$: console.log('dataFiltered',dataFiltered)
 
-$: domain = d3.extent(dataFiltered, d => {if (d.value !="") return Number(d.key)})
-$: maxValue = d3.max(dataFiltered, d => {if (d.value !="") return Number(d.value)})
+$: domain = d3.extent(dataFiltered, d => Number(d.key))
+$: maxValue = d3.max(dataFiltered, d => Number(d.value))
 $: {
-	minValue = d3.min(dataFiltered, d => {if (d.value !="") return Number(d.value)})
+	minValue = d3.min(dataFiltered, d => Number(d.value))
 	minValue = (minValue < 0)?minValue:0
 }
 
@@ -64,6 +64,7 @@ $: yAxis = (g, y) => g
 			.tickSizeOuter(0)
 			.tickPadding(30)
 			.tickSize(- width + margin.right + margin.left)
+			.tickFormat(d => d + unit)
 			.ticks(3)
 		)
 	.call(g => g.select(".domain").remove());

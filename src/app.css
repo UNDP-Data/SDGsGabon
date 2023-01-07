@@ -1,5 +1,13 @@
+:root{
+    --gray-200: #F7F7F7;
+    --gray-300: #EDEFF0;
+    --gray-400: #D4D6D8;
+    --gray-500: #A9B1B7;
+    --gray-600: #55606E;
+    --gray-700: #232E3D;
+}
 body{
-    background-color: #f7f7f7;
+    background-color: var(--gray-200)
 }
 h1.main-title{
     padding: 30px 0;
@@ -35,6 +43,7 @@ h5.subtitle{
     padding: 1rem 3.125rem 1rem 1rem;
     position: relative;
     text-transform: uppercase;
+    text-align: left;
     height: 3.25rem;
     min-width: 380px;
     width:auto;
@@ -71,28 +80,28 @@ h5.subtitle{
 }
 
 .dropdown-item{
-    border-bottom: 1px #ccc solid;
+    border-bottom: 1px var(--gray-400) solid;
     width: 100%;
     cursor: pointer;
     background-color: #FFF;
     display:flex;
     padding:0;
 }
+.dropdown-item:hover{
+    background-color: var(--gray-200);
+}
 .dropdownId{
     width: 50px;
-    padding-top:5px;
-    padding-bottom: 5px;
+    padding-top:12px;
+    padding-bottom: 12px;
     color: #FFF;
     font-size:1.2em;
     font-weight: bold;
     text-align: center;
 }
 .dropdownName{
-    /*float:left;*/
-    padding:7px;
+    padding:12px 7px;
 }
-.dropdownName:hover{
-font-weight: 500;}
 .sdgcontainer{
     padding:10px 30px;
 }
@@ -157,18 +166,21 @@ comparetext{
     padding-bottom:10px;
 }
 /* charts */
-
+svg text{
+    fill: var(--gray-600);
+}
 .tick text{
     font-size: 1.5em;
 }
 .yAxis .tick line, .xAxis .tick line{
-    stroke: #ccc;
+    stroke: var(--gray-400);
 }
 .yAxis text{
-    fill: #ccc;
+    fill: var(--gray-500);
 }
 .xAxis text{
     font-size: 18px;
+    fill: var(--gray-500);
 }
 .labels text{
     font-size: 20px;
@@ -204,7 +216,7 @@ comparetext{
     max-width: 400px;
 	position: absolute;
 	background: #000000;
-	color:#ccc;
+	color: var(--gray-300);
 	padding: 10px;
 	border: 0;
     -webkit-box-shadow: 4px 4px 5px -2px rgba(0, 0, 0, 0.4);
