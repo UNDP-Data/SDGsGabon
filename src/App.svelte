@@ -1,6 +1,6 @@
 <script>
   import { onMount} from 'svelte';
-  import { csv } from "d3-fetch";
+  import { csv, json } from "d3-fetch";
   import { select} from 'd3-selection'; 
   import { descending } from 'd3-array';
   import Bars from './lib/Bars.svelte';
@@ -11,13 +11,16 @@
   import MultipleLines from './lib/MultipleLines.svelte';
   import MultipleLinesDouble from './lib/MultipleLinesDouble.svelte';
   import List from './lib/List.svelte';
-  import sdgDataJson from './assets/GabonOddDonees.json';
+  //import sdgDataJson from './assets/GabonOddDonees.json';
 
 let dataLoaded =false;
 let isOpen= false;
-let d3 = { csv, select, descending};
-let sdgs;
+let d3 = {csv, json, select, descending};
+let sdgs, sdgDataJson;
 let tooltip, imageCode, activeColor;
+
+const dataUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/GabonOddDonees.json';
+const sdgsUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/ODDs.csv';
 
 const sdgColors = { 'sdg_1': '#e5243b', 'sdg_2': '#dda63a','sdg_3': '#4c9f38','sdg_4':'#c5192d','sdg_5' : ' #ff3a21','sdg_6' : ' #26bde2','sdg_7' : '#fcc30b','sdg_8' : '#a21942','sdg_9' : '#fd6925','sdg_10' : '#dd1367','sdg_11' : '#fd9d24','sdg_12' : '#bf8b2e','sdg_13' : '#3f7e44','sdg_14' : '#0a97d9','sdg_15' : '#56c02b','sdg_16' : '#00689d','sdg_17' : '#19486a'}
 
@@ -26,22 +29,6 @@ $: {
   imageCode = (Number(activeSDG) < 10)?'0'+activeSDG:activeSDG;
   activeColor = sdgColors[`sdg_${activeSDG}`];
 }
-// adding an array of key/values for years data
-for (const key in sdgDataJson){
-  sdgDataJson[key].forEach(target => {
-      target.indicateurs.forEach(indicator =>{
-        indicator.donees.forEach(data => {
-          //console.log('data',data)
-          let values =[]
-          for (const [key, value] of Object.entries(data.valeurs)) {
-              if (!isNaN(key)) values.push({'key':Number(key),'value':value })
-          }
-          data.values = values.filter(d => d.value != "");
-          //console.log('values',values)
-        })
-      })
-  })
-}
 
 onMount(()=> {
   tooltip = d3.select('.tooltipDiv');
@@ -49,9 +36,27 @@ onMount(()=> {
 });
 const getData = async() => {
   await Promise.all([
-    d3.csv("data/ODDs.csv")
+    d3.csv(sdgsUrl),
+    d3.json(dataUrl)
   ]).then( function(result){ 
     sdgs = result[0];
+    sdgDataJson = result[1];
+  // adding an array of key/values for years data
+    for (const key in sdgDataJson){
+      sdgDataJson[key].forEach(target => {
+          target.indicateurs.forEach(indicator =>{
+            indicator.donees.forEach(data => {
+              //console.log('data',data)
+              let values =[]
+              for (const [key, value] of Object.entries(data.valeurs)) {
+                  if (!isNaN(key)) values.push({'key':Number(key),'value':value })
+              }
+              data.values = values.filter(d => d.value != "");
+              //console.log('values',values)
+            })
+          })
+      })
+    }
   })
   dataLoaded =true;
 }
@@ -86,7 +91,7 @@ function displayNumberContainer(indicator){
     //console.log('comparer',indicator.donees.some(d => d.parametre === 'comparer'))
     return indicator.donees.some(d => d.parametre === 'comparer');
   }
-  else if (indicator.graphique == "GroupeBarres" || indicator.graphique == "GroupeLignes" || indicator.graphique == 'GroupeLignesDouble' || indicator.graphique == 'liste'){
+  else if (indicator.graphique == "GroupeBarres" || indicator.graphique == "GroupeLignes" || indicator.graphique == 'GroupeLignesDouble' || indicator.graphique == 'Liste'){
     return false;
   }
   else return true;
@@ -98,9 +103,6 @@ function displayNumberContainer(indicator){
 	<div class="container">
 		<header>
 			<h1 class="main-title">Objectifs de Développement Durable au Gabon</h1>
-			<div class="alert alert-warning" role="alert">
-				Essai 3, travaux en cours ! | Test 3, work in progress!
-			</div>
 			<Dropdown {isOpen} toggle={() => (isOpen = !isOpen)} size="lg">Sélectionnez ODD
         <DropdownToggle class="undp-select">
 					<span class="selectedSDG">{ sdgs.filter(d => d.code == activeSDG)[0].nomCourt }<span>

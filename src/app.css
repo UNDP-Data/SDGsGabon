@@ -87,14 +87,13 @@ h5.subtitle{
 .dropdownId{
     width: 50px;
     padding-top:12px;
-    padding-bottom: 5px;
+    padding-bottom: 12px;
     color: #FFF;
     font-size:1.2em;
     font-weight: bold;
     text-align: center;
 }
 .dropdownName{
-    /*float:left;*/
     padding:12px 7px;
 }
 .sdgcontainer{

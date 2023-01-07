@@ -18,16 +18,10 @@ function latestNumber(items){
   // sorting values
     items.values.sort((a,b) => d3.descending(a.key, b.key))
     let value = items.values.find( d => d.value  !="")
-	console.log('latestNumber', value)
+	////console.log('latestNumber', value)
     return value;
 }
 
-function capFirst(string) {
-	return string.charAt(0).toUpperCase() + string.slice(1);
-}
-function createLabel(text){
-	return wrapText(capFirst(text), labelWidth)
-}
 </script>
 <div id="ind_{id.replaceAll('.','-')}"  class="list">
 	{#each data as listData,i}
