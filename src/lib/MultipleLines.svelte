@@ -6,12 +6,12 @@ export let id;
 export let color;
 export let unit;
 
-$: console.log('id',id)
-$: console.log('linechart group data ---- ',data)
-$: console.log('sets ---',data.map( d => d.groupe))
+//$: console.log('id',id)
+//$: console.log('linechart group data ---- ',data)
+//$: console.log('sets ---',data.map( d => d.groupe))
 
 $: sets = [... new Set(data.map( d => d.groupe))]
-console.log('sets',sets)
+//console.log('sets',sets)
 
 // add title
 // separate the data in sets

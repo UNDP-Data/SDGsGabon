@@ -18,8 +18,8 @@ let yBar, unit;
 
 const barHeight = 30;
 let width = 400, height = 300;
-const margin = {'top':20,'right':110,'bottom':30,'left':170}
-const labelWidth = 24;//margin.left - 60;
+const margin = {'top':0,'right':110,'bottom':30,'left':170}
+const labelWidth = 24;
 let dataFiltered;
 
 //$: console.log('id',id, id.replaceAll('.','-'))
@@ -32,20 +32,19 @@ function yPosition(i){
 	// check in data if not first element, if set is different from previous add additional pixels
 	if ((i > 0) && (sets.length > 0) && (dataFiltered[i].groupe != dataFiltered[i-1].groupe )) yBar += 60;
 	else yBar += barHeight+5;
-	//console.log('yBar',yBar, i)
 	return yBar;
 }
-$: dataFiltered = data.filter(d => d.parametre != 'compare')
+$: dataFiltered = data.filter(d => (d.parametre != 'comparer') && d.valeurs[latestValue.key]!=undefined)
 
 $: sets = [... new Set(dataFiltered.map( d => d.groupe))]
 
-$: height = ((barHeight+5) * data.filter( d => (d.parametre != 'compare')).length) + sets.length * 30 + 80; 
+$: height = ((barHeight+5) * dataFiltered.length) + sets.length * 30 + margin.bottom; 
 
 $: {
-	compareItems = data.filter(d => d.parametre == 'compare')
+	compareItems = data.filter(d => d.parametre == 'comparer')
 	//console.log('compareItems',compareItems)
 	if (compareItems.length > 0) {
-		compareValue = compareItems[0].valeurs[latestValue.key].replace(',','.')
+		compareValue = compareItems[0].valeurs[latestValue.key];
 		compareDescription = compareItems[0].description;
 		unit = compareItems[0].unite;
 		unit = (unit!='%')?` ${unit}`:unit;
@@ -55,14 +54,7 @@ $: {
 	}
 }
 
-$: {
-	maxValue = 0;
-	data.forEach(d => { 
-		// to do : check if the same for all items
-		let newMax = d3.max(d.values, k => Number(k.value))
-		maxValue = (maxValue > newMax)? maxValue:newMax;       
-	})
-}
+$: maxValue= d3.max(data, d=> Number(d.valeurs[latestValue.key]))
 
 $: hScale = d3.scaleLinear()
         .range([0, width-margin.left-margin.right])
