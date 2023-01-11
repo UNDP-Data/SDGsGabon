@@ -642,7 +642,7 @@
                         {
                             "description": "Gabon",
                             "unite": "",
-                            "groupe": "1",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2012": "65",
@@ -724,7 +724,7 @@
                         {
                             "description": "Gabon",
                             "unite": "",
-                            "groupe": "1",
+                            "groupe": "",
                             "parametre": "comparer",
                             "valeurs": {
                                 "2012": "4.1",
@@ -988,7 +988,7 @@
                         {
                             "description": "Densité (pour 1000 habitants)",
                             "unite": "",
-                            "groupe": "1",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2018": "4.8",
@@ -1569,7 +1569,7 @@
                         {
                             "description": "Parlement",
                             "unite": "%",
-                            "groupe": "1",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2012": "15.8",
@@ -1580,7 +1580,7 @@
                         {
                             "description": "Maire titulaire",
                             "unite": "%",
-                            "groupe": "2",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2017": "13",
@@ -1590,7 +1590,7 @@
                         {
                             "description": "Adjoint au Maire",
                             "unite": "%",
-                            "groupe": "3",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2021": "27.5"
@@ -1599,7 +1599,7 @@
                         {
                             "description": "Président de Conseil Départemental",
                             "unite": "%",
-                            "groupe": "4",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2017": "27",
@@ -1609,7 +1609,7 @@
                         {
                             "description": "Vice-Président de Conseil Départemental",
                             "unite": "%",
-                            "groupe": "5",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2021": "23.5"
@@ -2482,7 +2482,7 @@
                         {
                             "description": "Passagers voie ferroviaire (en milliers)",
                             "unite": "",
-                            "groupe": "1",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "237.4",
@@ -2493,7 +2493,7 @@
                         {
                             "description": "Fret voie ferroviaire (en millions de tonnes)",
                             "unite": "",
-                            "groupe": "2",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "4.7",
@@ -2628,7 +2628,7 @@
                         {
                             "description": "Abonnement internet (% population)",
                             "unite": "",
-                            "groupe": "1",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "13",
@@ -2638,7 +2638,7 @@
                         {
                             "description": "Abonnement au téléphone mobile (pour 100 habitants)",
                             "unite": "",
-                            "groupe": "2",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "144.9",
@@ -2739,7 +2739,7 @@
                         {
                             "description": "Capital réglementaire bancaire total par rapport aux actifs pondérés en fonction des risques",
                             "unite": "%",
-                            "groupe": "1",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "8.3",
@@ -2750,7 +2750,7 @@
                         {
                             "description": "Total du capital (valeur nette) aux actifs",
                             "unite": "%",
-                            "groupe": "2",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "9.3",
@@ -2761,7 +2761,7 @@
                         {
                             "description": "Créances improductives (% créances totales)",
                             "unite": "%",
-                            "groupe": "3",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "5.3",
@@ -2772,7 +2772,7 @@
                         {
                             "description": "Créances improductives nettes de dotation en capital",
                             "unite": "%",
-                            "groupe": "4",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "6.5",
@@ -2783,7 +2783,7 @@
                         {
                             "description": "Revenus nets sur capital moyen",
                             "unite": "%",
-                            "groupe": "5",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "13.5",
@@ -2794,7 +2794,7 @@
                         {
                             "description": "Dépenses hors intérêts par rapport au revenu brut",
                             "unite": "%",
-                            "groupe": "6",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "76.6",
@@ -2805,7 +2805,7 @@
                         {
                             "description": "Actifs liquides (% actifs total)",
                             "unite": "%",
-                            "groupe": "7",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "24.4",
@@ -2816,7 +2816,7 @@
                         {
                             "description": "Actifs liquides (% passifs à court terme)",
                             "unite": "%",
-                            "groupe": "8",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2015": "148.3",
@@ -3283,7 +3283,7 @@
                         {
                             "description": "Emission d’oxyde nitreux agricole (en milliers métriques d’équivalent CO2)",
                             "unite": "",
-                            "groupe": "1",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2012": "340",
@@ -3294,7 +3294,7 @@
                         {
                             "description": "Emission de CO2 (tonne métrique par habitants)",
                             "unite": "",
-                            "groupe": "2",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2012": "3.3",
@@ -3305,7 +3305,7 @@
                         {
                             "description": "Accès à des combustion et techniques de cuisson propre (en % de population totale )",
                             "unite": "%",
-                            "groupe": "3",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2012": "75.8",
@@ -3315,7 +3315,7 @@
                         {
                             "description": "Production d’électricité à partir des sources d’énergie renouvelable hors énergie hydro-électriques (% du total)",
                             "unite": "%",
-                            "groupe": "4",
+                            "groupe": "",
                             "parametre": "",
                             "valeurs": {
                                 "2012": "0.6",

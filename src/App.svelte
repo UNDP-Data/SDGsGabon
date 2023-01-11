@@ -11,7 +11,7 @@
   import MultipleLines from './lib/MultipleLines.svelte';
   import MultipleLinesDouble from './lib/MultipleLinesDouble.svelte';
   import List from './lib/List.svelte';
-  //import sdgDataJson from './assets/GabonOddDonees.json';
+  //import sdgDataJson from './assets/GabonOdddonnees.json';
 
 let dataLoaded =false;
 let isOpen= false;
@@ -19,7 +19,7 @@ let d3 = {csv, json, select, descending};
 let sdgs, sdgDataJson;
 let tooltip, imageCode, activeColor;
 
-const dataUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/GabonOddDonees.json';
+const dataUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/GabonOdddonnees.json';
 const sdgsUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/ODDs.csv';
 
 const sdgColors = { 'sdg_1': '#e5243b', 'sdg_2': '#dda63a','sdg_3': '#4c9f38','sdg_4':'#c5192d','sdg_5' : ' #ff3a21','sdg_6' : ' #26bde2','sdg_7' : '#fcc30b','sdg_8' : '#a21942','sdg_9' : '#fd6925','sdg_10' : '#dd1367','sdg_11' : '#fd9d24','sdg_12' : '#bf8b2e','sdg_13' : '#3f7e44','sdg_14' : '#0a97d9','sdg_15' : '#56c02b','sdg_16' : '#00689d','sdg_17' : '#19486a'}
@@ -45,7 +45,7 @@ const getData = async() => {
     for (const key in sdgDataJson){
       sdgDataJson[key].forEach(target => {
           target.indicateurs.forEach(indicator =>{
-            indicator.donees.forEach(data => {
+            indicator.donnees.forEach(data => {
               //console.log('data',data)
               let values =[]
               for (const [key, value] of Object.entries(data.valeurs)) {
@@ -63,7 +63,7 @@ const getData = async() => {
 
 function displayLatestValue(indicator) {
   //console.log('d in display latest value',indicator)
-  let dataFirst = indicator.donees[0] 
+  let dataFirst = indicator.donnees[0] 
   let yearsData = dataFirst.valeurs; /// using first value
   let values = []
   for (const [key, value] of Object.entries(yearsData)) {
@@ -80,16 +80,16 @@ function displayLatestValue(indicator) {
 function latestNumber(indicator){
    //console.log('in latest Number',indicator)
   // sorting values and using first not empty item
-    indicator.donees[0].values.sort((a,b) => d3.descending(a.key, b.key))
-    let value = indicator.donees[0].values.find( d => d.value  !="")
+    indicator.donnees[0].values.sort((a,b) => d3.descending(a.key, b.key))
+    let value = indicator.donnees[0].values.find( d => d.value  !="")
     return value;
 }
 
 function displayNumberContainer(indicator){
   //console.log('indicator chart --------',indicator)
   if (indicator.graphique == 'Bandes'){
-    //console.log('comparer',indicator.donees.some(d => d.parametre === 'comparer'))
-    return indicator.donees.some(d => d.parametre === 'comparer');
+    //console.log('comparer',indicator.donnees.some(d => d.parametre === 'comparer'))
+    return indicator.donnees.some(d => d.parametre === 'comparer');
   }
   else if (indicator.graphique == "GroupeBarres" || indicator.graphique == "GroupeLignes" || indicator.graphique == 'GroupeLignesDouble' || indicator.graphique == 'Liste'){
     return false;
@@ -161,14 +161,14 @@ function displayNumberContainer(indicator){
                   <!---- charts -->
                   {#if indicator.graphique == 'Bandes'}
                     <Bars 
-                      data={indicator.donees.filter(d => d.parametre != 'cacher')}
+                      data={indicator.donnees.filter(d => d.parametre != 'cacher')}
                       id = {indicator.codeIndicateur}
                       color = {activeColor}
                       latestValue={latestNumber(indicator)}
                     ></Bars>
                   {:else if indicator.graphique == 'GroupeBarres'}
                     <MultipleBars 
-                      data={indicator.donees.filter(d => d.parametre != 'cacher')}
+                      data={indicator.donnees.filter(d => d.parametre != 'cacher')}
                       id = {indicator.codeIndicateur}
                       color = {activeColor}
                       latestValue={latestNumber(indicator)}
@@ -176,29 +176,29 @@ function displayNumberContainer(indicator){
                       ></MultipleBars>
                   {:else if indicator.graphique == 'Ligne'}
                     <LineChart
-                      data= {indicator['donees'][0].values}
+                      data= {indicator['donnees'][0].values}
                       id = {indicator.codeIndicateur}
                       color = {activeColor}
-                      unit = {indicator['donees'][0].unite}
+                      unit = {indicator['donnees'][0].unite}
                     >
                     </LineChart>
                   {:else if indicator.graphique == 'GroupeLignes'}
                     <MultipleLines
-                      data= {indicator.donees.filter(d => d.parametre != 'cacher')}
+                      data= {indicator.donnees.filter(d => d.parametre != 'cacher')}
                       id = {indicator.codeIndicateur}
                       color = {activeColor}
-                      unit = {indicator['donees'][0].unite}
+                      unit = {indicator['donnees'][0].unite}
                     >
                     </MultipleLines>
                   {:else if indicator.graphique == 'GroupeLignesDouble'}
                     <MultipleLinesDouble
-                      data= {indicator['donees'].filter(d => d.parametre != 'cacher')}
+                      data= {indicator['donnees'].filter(d => d.parametre != 'cacher')}
                       id = {indicator.codeIndicateur}
                     >
                   </MultipleLinesDouble>
                   {:else if indicator.graphique == 'Liste'}
                     <List 
-                    data={indicator.donees.filter(d => d.parametre != 'cacher')}
+                    data={indicator.donnees.filter(d => d.parametre != 'cacher')}
                     id = {indicator.codeIndicateur}
                     color ={activeColor}
                     ></List>
@@ -209,7 +209,7 @@ function displayNumberContainer(indicator){
                   {#if displayNumberContainer(indicator)}
                     <div class="yearValue" style="background-color: {activeColor};">
                       <div class="year">{displayLatestValue(indicator)['key']}</div>
-                      <div class="{(displayLatestValue(indicator)['value'].toString().length < 6)?'value':'longValue'}">{displayLatestValue(indicator)['value']}{indicator.donees[0].unite}</div>
+                      <div class="{(displayLatestValue(indicator)['value'].toString().length < 6)?'value':'longValue'}">{displayLatestValue(indicator)['value']}{indicator.donnees[0].unite}</div>
                     </div>
                     {/if}
                   </div>
