@@ -11,7 +11,7 @@
   import MultipleLines from './lib/MultipleLines.svelte';
   import MultipleLinesDouble from './lib/MultipleLinesDouble.svelte';
   import List from './lib/List.svelte';
-  //import sdgDataJson from './assets/GabonOdddonnees.json';
+  //import sdgDataJson from './assets/GabonOddDonnees.json';
 
 let dataLoaded =false;
 let isOpen= false;
@@ -19,7 +19,7 @@ let d3 = {csv, json, select, descending};
 let sdgs, sdgDataJson;
 let tooltip, imageCode, activeColor;
 
-const dataUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/GabonOdddonnees.json';
+const dataUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/GabonOddDonnees.json';
 const sdgsUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/ODDs.csv';
 
 const sdgColors = { 'sdg_1': '#e5243b', 'sdg_2': '#dda63a','sdg_3': '#4c9f38','sdg_4':'#c5192d','sdg_5' : ' #ff3a21','sdg_6' : ' #26bde2','sdg_7' : '#fcc30b','sdg_8' : '#a21942','sdg_9' : '#fd6925','sdg_10' : '#dd1367','sdg_11' : '#fd9d24','sdg_12' : '#bf8b2e','sdg_13' : '#3f7e44','sdg_14' : '#0a97d9','sdg_15' : '#56c02b','sdg_16' : '#00689d','sdg_17' : '#19486a'}
