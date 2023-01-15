@@ -22,7 +22,7 @@ export let unit;
 //console.log('data in line',data)
 
 let mounted = false;
-const margin = {"top": 20, "right":70, "bottom":40, "left":70}
+const margin = {"top": 20, "right":30, "bottom":40, "left":70}
 let width, height = 270;
 let gx,gy;
 let dataFiltered;

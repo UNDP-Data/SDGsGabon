@@ -9,9 +9,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "1.1.1 Proportion de la population vivant au-dessous du seuil de pauvreté fixé au niveau international, par sexe, âge et lieu de résidence (zone urbaine/zone rurale) (5,5 dollars/jour) (%)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "1.1.1 Proportion de la population vivant au-dessous du seuil de pauvreté fixé au niveau international, par sexe, âge et lieu de résidence (zone urbaine/zone rurale) (5,5 dollars/jour) (%)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -34,7 +34,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "1.2.1 Proportion de la population vivant au-dessous du seuil national de pauvreté, par sexe et lieu de résidence (5,7 dollars/jour) (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -100,7 +100,7 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "1.3.1 Proportion de la population bénéficiant de socles ou systèmes de protection sociale, par sexe et par groupes de population (enfants, chômeurs, personnes âgées, personnes handicapées, femmes enceintes et nouveau-nés, victimes d’un accident du travail, pauvres et personnes vulnérables)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Bénéficiaires des « allocations annuelles aux personnes en situation de handicap »",
                             "unite": "%",
@@ -174,7 +174,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "1.4.1 Proportion de la population vivant dans des ménages ayant accès aux services de base (%) (l’accès simultané à l’éducation primaire, à l’eau potable, aux toilettes améliorées, à l’électricité et aux combustibles propres) ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -217,7 +217,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -226,7 +226,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -241,9 +241,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "1.a.2 Proportion des dépenses publiques totales affectée aux services essentiels (éducation, santé et protection sociale)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "1.a.2 Proportion des dépenses publiques totales affectée aux services essentiels (éducation, santé et protection sociale)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -266,9 +266,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "1.b.1 Dépenses sociales publiques favorables aux pauvres (en milliards F CFA)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "1.b.1 Dépenses sociales publiques favorables aux pauvres (en milliards F CFA)",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -295,9 +295,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "2.1.1 Prévalence de la sous-alimentation (%)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "2.1.1 Prévalence de la sous-alimentation (%)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -316,7 +316,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -331,7 +331,7 @@
                     "graphique": "GroupeLignesDouble",
                     "indicateurDisponible": "Oui",
                     "indicateur": "2.2.1 Prévalence du retard de croissance (indice taille/âge) (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -388,7 +388,7 @@
                     "graphique": "GroupeLignesDouble",
                     "indicateurDisponible": "Oui",
                     "indicateur": "2.2.2 Prévalence de la malnutrition (indice poids/taille) (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -445,7 +445,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "2.2.3 Prévalence de l’anémie chez les femmes âgées de 15 à 49 ans, selon l’état de grossesse (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -470,7 +470,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "2.3.1 Volume de production par unité de travail, en fonction de la taille de l’exploitation agricole, pastorale ou forestière (tonnes/ ha)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Banane",
                             "unite": "tonnes",
@@ -498,9 +498,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "2.3.2 Revenu moyen des petits producteurs alimentaires, selon le sexe et le statut d’autochtone, (en millions FCFA par an) ",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "2.3.2 Revenu moyen des petits producteurs alimentaires, selon le sexe et le statut d’autochtone, (en millions FCFA par an) ",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -523,9 +523,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "2.4.1 Proportion des zones agricoles exploitées de manière productive et durable (%)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "2.4.1 Proportion des zones agricoles exploitées de manière productive et durable (%)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -548,7 +548,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -557,7 +557,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -574,9 +574,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.1.1 Taux de mortalité maternelle (pour 100 000 naissances vivantes)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "3.1.1 Taux de mortalité maternelle (pour 100 000 naissances vivantes)",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -595,7 +595,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.1.2 Proportion d’accouchements assistés par du personnel de santé qualifié (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -638,7 +638,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.2.1 Taux de mortalité des enfants de moins de 5 ans (pour 1000 naissances vivantes)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "",
@@ -677,7 +677,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.2.2 Taux de mortalité néonatale (pour 1000 naissances vivantes)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "",
@@ -720,7 +720,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.3.1 Nombre de nouvelles infections à VIH pour 1000 personnes séronégatives, par sexe, âge et appartenance à un groupe de population à risque",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "",
@@ -759,9 +759,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.3.2 Incidence de la tuberculose pour 1000 habitants ",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "3.3.2 Incidence de la tuberculose pour 1000 habitants ",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -779,9 +779,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.3.3 Incidence du paludisme pour 1000 habitants ",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "3.3.3 Incidence du paludisme pour 1000 habitants ",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -800,9 +800,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.3.4 Incidence de l’hépatite B pour 100000 habitants ",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "3.3.4 Incidence de l’hépatite B pour 100000 habitants ",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -819,7 +819,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -834,7 +834,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -843,7 +843,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -858,7 +858,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -873,7 +873,7 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.7.1 Proportion de femmes en âge de procréer (15 à 49 ans) qui utilisent des méthodes modernes de planification familiale",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "3.7.1 Proportion de femmes en âge de procréer (15 à 49 ans) qui utilisent des méthodes modernes de planification familiale",
                             "unite": "%",
@@ -893,7 +893,7 @@
                     "graphique": "GroupeBarres",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.7.2 Taux de natalité chez les adolescentes (10 à 14 ans et 15 à 19 ans) pour 1 000 adolescentes du même groupe d’âge",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "",
@@ -938,9 +938,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.8.1 Couverture de services de santé essentiels ",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "3.8.1 Couverture de services de santé essentiels ",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -959,9 +959,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.8.2 Proportion de la population consacrant une grande part de ses dépenses ou de ses revenus domestiques aux services de soins de santé",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "3.8.2 Proportion de la population consacrant une grande part de ses dépenses ou de ses revenus domestiques aux services de soins de santé",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -984,7 +984,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "3.c.1 Densité et répartition du personnel de santé",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Densité (pour 1000 habitants)",
                             "unite": "",
@@ -1017,7 +1017,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1034,7 +1034,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "4.1.1 Proportion d’enfants et de jeunes en fin de cycle primaire qui maîtrisent au moins les normes d’aptitudes minimales ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "En lecture (%)",
                             "unite": "%",
@@ -1062,7 +1062,7 @@
                     "graphique": "GroupeBarres",
                     "indicateurDisponible": "Oui",
                     "indicateur": "4.1.2 Taux d’achèvement ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -1163,7 +1163,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -1172,7 +1172,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1187,7 +1187,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1202,7 +1202,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "4.5.1 : Indices de parité (femmes/hommes, urbain/rural, quintile inférieur/supérieur de richesse et autres paramètres tels que le handicap, le statut d’autochtone et les situations de conflit, à mesure que les données deviennent disponibles) pour tous les indicateurs dans le domaine de l’éducation de cette liste pouvant être ventilés (Taux d’achèvement)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Primaire",
                             "unite": "",
@@ -1245,7 +1245,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1260,7 +1260,7 @@
                     "graphique": "GroupeBarres",
                     "indicateurDisponible": "Oui",
                     "indicateur": "4.a.1 Proportion d’établissements scolaires offrant des services essentiels, par type de service ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Préscolaire",
                             "unite": "%",
@@ -1386,7 +1386,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1401,7 +1401,7 @@
                     "graphique": "GroupeBarres",
                     "indicateurDisponible": "Oui",
                     "indicateur": "4.c.1 Proportion d'enseignants ayant les qualifications minimales requises par niveau d'étude (%) ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Hommes",
                             "unite": "%",
@@ -1477,9 +1477,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "5.1.1 Présence ou absence d’un cadre juridique visant à promouvoir, faire respecter et suivre l’application des principes d’égalité des sexes et de non-discrimination fondée sur le sexe ",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "5.1.1 Présence ou absence d’un cadre juridique visant à promouvoir, faire respecter et suivre l’application des principes d’égalité des sexes et de non-discrimination fondée sur le sexe ",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -1502,7 +1502,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1517,7 +1517,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -1526,7 +1526,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -1535,7 +1535,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1550,7 +1550,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1565,7 +1565,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "5.5.1 Proportion de sièges occupés par des femmes dans les parlements nationaux et les administrations locales (% des sièges) ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Parlement",
                             "unite": "%",
@@ -1624,7 +1624,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1639,9 +1639,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "5.6.1 Proportion de femmes âgées de 15 à 49 ans prenant, en connaissance de cause, leurs propres décisions concernant leurs relations sexuelles, l’utilisation de contraceptifs et les soins de santé procréative",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "5.6.1 Proportion de femmes âgées de 15 à 49 ans prenant, en connaissance de cause, leurs propres décisions concernant leurs relations sexuelles, l’utilisation de contraceptifs et les soins de santé procréative",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -1664,7 +1664,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "5.a.1 a) Proportion de la population agricole totale ayant des droits de propriété ou des droits garantis sur des terres agricoles, par sexe",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -1707,7 +1707,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "5.b.1 Proportion de la population possédant un téléphone portable (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Ménages dont le chef est une femme",
                             "unite": "%",
@@ -1761,7 +1761,7 @@
                     "graphique": "GroupeBarres",
                     "indicateurDisponible": "Oui",
                     "indicateur": "6.1.1 Proportion de la population utilisant des services d’alimentation en eau potable gérés en toute sécurité (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Urbain",
                             "unite": "%",
@@ -1804,7 +1804,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "6.2.1 Proportion de la population utilisant des services d’assainissement : ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -1847,7 +1847,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -1856,7 +1856,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1871,7 +1871,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -1888,7 +1888,7 @@
                     "graphique": "GroupeLignesDouble",
                     "indicateurDisponible": "Oui",
                     "indicateur": "7.1.1 Proportion de la population ayant accès à l’électricité (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -1931,7 +1931,7 @@
                     "graphique": "GroupeLignesDouble",
                     "indicateurDisponible": "Oui",
                     "indicateur": "7.1.2 Proportion de la population utilisant principalement des carburants et technologies propres",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -1999,9 +1999,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "7.2.1 Part de l’énergie renouvelable dans la consommation finale d’énergie (%)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "7.2.1 Part de l’énergie renouvelable dans la consommation finale d’énergie (%)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -2026,9 +2026,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "7.3.1 Intensité énergétique [rapport entre énergie primaire et produit intérieur brut (PIB)], %PIB",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "7.3.1 Intensité énergétique [rapport entre énergie primaire et produit intérieur brut (PIB)], %PIB",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -2053,9 +2053,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "7.b.1 Puissance installée du parc d’énergie renouvelable dans les pays en développement (en watts par habitant)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "7.b.1 Puissance installée du parc d’énergie renouvelable dans les pays en développement (en watts par habitant)",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -2082,9 +2082,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.1.1 Taux de croissance annuelle du PIB réel par habitant",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "8.1.1 Taux de croissance annuelle du PIB réel par habitant",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -2109,9 +2109,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.2.1 Taux de croissance annuelle du PIB réel par personne pourvue d’un emploi",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "8.2.1 Taux de croissance annuelle du PIB réel par personne pourvue d’un emploi",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -2130,9 +2130,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.3.1 Proportion de l’emploi informel dans l’emploi total, par secteur et par sexe (en %)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "8.3.1 Proportion de l’emploi informel dans l’emploi total, par secteur et par sexe (en %)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -2155,7 +2155,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -2164,7 +2164,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2179,7 +2179,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.5.2 Taux de chômage, par sexe, âge et situation au regard du handicap (en %)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -2247,7 +2247,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.6.1 Proportion de jeunes (âgés de 15 à 24 ans) non scolarisés et sans emploi ni formation",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Gabon",
                             "unite": "%",
@@ -2290,7 +2290,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2305,7 +2305,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -2314,7 +2314,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2329,9 +2329,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.9.1 PIB directement tiré du tourisme, en proportion du PIB total et en taux de croissance (en %)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "8.9.1 PIB directement tiré du tourisme, en proportion du PIB total et en taux de croissance (en %)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -2348,7 +2348,7 @@
                     "graphique": "Liste",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.9.2 Nombre d’emplois dans les secteurs du tourisme, en proportion du nombre total d’emplois et du taux de croissance des emplois, par sexe ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Nombre d’emplois ",
                             "unite": "",
@@ -2382,7 +2382,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.10.1 a) Nombre de succursales de banques commerciales pour 100 000 adultes et b) nombre de distributeurs automatiques de billets pour 100 000 adultes ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Nombre de succursales",
                             "unite": "%",
@@ -2410,7 +2410,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.10.2 Proportion d’adultes (15 ans ou plus) ou faisant appel à des services monétaires mobiles (%) ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "possédant un compte dans une banque ",
                             "unite": "%",
@@ -2442,9 +2442,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "8.b.1 Existence d’une stratégie nationale de promotion de l’emploi des jeunes, qu’il s’agisse d’une stratégie à part entière ou d’une composante d’une stratégie nationale de promotion de l’emploi, et application de cette stratégie",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "8.b.1 Existence d’une stratégie nationale de promotion de l’emploi des jeunes, qu’il s’agisse d’une stratégie à part entière ou d’une composante d’une stratégie nationale de promotion de l’emploi, et application de cette stratégie",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -2469,7 +2469,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -2478,7 +2478,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "9.1.2 Nombre de passagers et volume de fret, par mode de transport",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Passagers voie ferroviaire (en milliers)",
                             "unite": "",
@@ -2516,9 +2516,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "9.2.1 Valeur ajoutée dans l’industrie manufacturière, en proportion du PIB et par habitant (%PIB/habitant)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "9.2.1 Valeur ajoutée dans l’industrie manufacturière, en proportion du PIB et par habitant (%PIB/habitant)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -2537,9 +2537,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "9.2.2 Emploi dans l’industrie manufacturière, en proportion de l’emploi total (%)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "9.2.2 Emploi dans l’industrie manufacturière, en proportion de l’emploi total (%)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -2562,7 +2562,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -2571,7 +2571,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2586,7 +2586,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "9.4.1 Emission de CO2 par unité de valeur ajoutée",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Internet",
                             "unite": "%",
@@ -2624,7 +2624,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "9.c.1 Proportion de la population ayant accès à un réseau mobile, par type de technologie",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Abonnement internet (% population)",
                             "unite": "",
@@ -2663,7 +2663,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2678,7 +2678,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2693,7 +2693,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2708,7 +2708,7 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "10.4.1 Part du travail dans le PIB (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "10.4.1 Part du travail dans le PIB (%)",
                             "unite": "%",
@@ -2735,7 +2735,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "10.5.1 Indicateurs de solidité financière ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Capital réglementaire bancaire total par rapport aux actifs pondérés en fonction des risques",
                             "unite": "%",
@@ -2839,7 +2839,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "10.7.4 Proportion de réfugiés dans la population, par pays d’origine (% population)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Tchad",
                             "unite": "%",
@@ -2900,7 +2900,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2915,7 +2915,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2932,9 +2932,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "11.1.1 Proportion de la population urbaine vivant dans des quartiers de taudis, des implantations sauvages ou des logements inadéquats (%)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "11.1.1 Proportion de la population urbaine vivant dans des quartiers de taudis, des implantations sauvages ou des logements inadéquats (%)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -2959,7 +2959,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -2974,9 +2974,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "11.3.1 Ratio entre le taux d’utilisation des terres et le taux de croissance démographique",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "11.3.1 Ratio entre le taux d’utilisation des terres et le taux de croissance démographique",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -3001,7 +3001,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3016,7 +3016,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "11.5.1 Nombre de personnes décédées, disparues ou directement touchées lors de catastrophes, pour 100 000 personnes",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Personnes décédées",
                             "unite": "",
@@ -3057,7 +3057,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -3066,7 +3066,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3081,7 +3081,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3098,7 +3098,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3113,7 +3113,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3128,7 +3128,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3143,7 +3143,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3158,7 +3158,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3173,7 +3173,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3188,7 +3188,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3203,7 +3203,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3220,7 +3220,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "13.1.1 Nombre de personnes décédées, disparues ou directement touchées lors de catastrophes, pour 100 000 personnes",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Personnes décédées",
                             "unite": "",
@@ -3255,7 +3255,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3270,7 +3270,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -3279,7 +3279,7 @@
                     "graphique": "GroupeLignes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "13.2.2 Total des émissions annuelles de gaz à effet de serre ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Emission d’oxyde nitreux agricole (en milliers métriques d’équivalent CO2)",
                             "unite": "",
@@ -3337,7 +3337,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3354,7 +3354,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3369,7 +3369,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3384,9 +3384,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "14.4.1 Proportion de stocks de poissons se situant à un niveau biologiquement viable (proxy : fluctuations des stocks de poissons dans les inventaires de ressources, fréquentation des eaux gabonaises par les armements étrangers)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "14.4.1 Proportion de stocks de poissons se situant à un niveau biologiquement viable (proxy : fluctuations des stocks de poissons dans les inventaires de ressources, fréquentation des eaux gabonaises par les armements étrangers)",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -3409,7 +3409,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3424,9 +3424,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "14.7.1 Surface des aires marines protégées, en proportion de la surface totale ",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "14.7.1 Surface des aires marines protégées, en proportion de la surface totale ",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -3451,7 +3451,7 @@
                     "graphique": "Liste",
                     "indicateurDisponible": "Oui",
                     "indicateur": "14.b.1 : Progrès réalisés par les pays dans la mise en œuvre d’un cadre juridique, réglementaire, politique ou institutionnel reconnaissant et protégeant les droits d’accès des petits pêcheurs : nombre de coopératives, nombre de centres de pêche artisanale, nombre d’autorisations de pêche délivrées",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Nombre de coopérative",
                             "unite": "",
@@ -3505,9 +3505,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "15.1.1 Surface des zones forestières en proportion de la surface terrestre (proxy en milliers d’ha)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "15.1.1 Surface des zones forestières en proportion de la surface terrestre (proxy en milliers d’ha)",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -3526,9 +3526,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "15.1.2 Proportion des sites important pour la biodiversité terrestre et la biodiversité des eaux douces qui se trouve dans les aires protégées (par type d’écosystème) /proxy en milliers d’ha). ",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "15.1.2 Proportion des sites important pour la biodiversité terrestre et la biodiversité des eaux douces qui se trouve dans les aires protégées (par type d’écosystème) /proxy en milliers d’ha). ",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -3553,7 +3553,7 @@
                     "graphique": "Bandes",
                     "indicateurDisponible": "Oui",
                     "indicateur": "15.2.1 Progrès vers la gestion durable des forêts ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Surfaces aménagées",
                             "unite": "%",
@@ -3596,7 +3596,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3611,7 +3611,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3626,7 +3626,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3643,7 +3643,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non  ",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -3652,7 +3652,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -3661,7 +3661,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "16.1.4 Nombre de personnes considérant qu’il n’y a pas de danger à se déplacer seules à pied dans leur zone de résidence, en proportion de la population totale ",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Proportion de ménages non pauvres ayant eu peur d’être agressé hors de leurs ménages au cours des 12 derniers mois",
                             "unite": "%",
@@ -3695,7 +3695,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -3704,7 +3704,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3719,7 +3719,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 },
@@ -3728,9 +3728,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "16.3.2 Proportion de la population carcérale en instance de jugement (proxy)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "16.3.2 Proportion de la population carcérale en instance de jugement (proxy)",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -3753,7 +3753,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3768,9 +3768,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "16.5.1 Proportion de personnes ayant eu, au moins une fois, affaire à un agent public auquel elles ont versé un pot-de-vin ou qui leur a demandé un pot-de-vin au cours des 12 mois précédents (%)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "16.5.1 Proportion de personnes ayant eu, au moins une fois, affaire à un agent public auquel elles ont versé un pot-de-vin ou qui leur a demandé un pot-de-vin au cours des 12 mois précédents (%)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -3789,7 +3789,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3804,7 +3804,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -3819,7 +3819,7 @@
                     "graphique": "Liste",
                     "indicateurDisponible": "Oui",
                     "indicateur": "16.7.2 Proportion de la population qui estime que la prise de décisions est ouverte et réactive (%)",
-                    "donees": [
+                    "donnees": [
                         {
                             "description": "Par la femme pour ce qui est de ses soins de santé ",
                             "unite": "%",
@@ -3862,9 +3862,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "16.9.1 Proportion d’enfants de moins de 5 ans ayant été enregistrés par une autorité d’état civil, par âge (%)",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "16.9.1 Proportion d’enfants de moins de 5 ans ayant été enregistrés par une autorité d’état civil, par âge (%)",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -3887,9 +3887,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "16.10.1 Nombre de cas avérés de meurtres, d’enlèvements, de disparitions forcées, de détentions arbitraires et d’actes de torture dont ont été victimes des journalistes, des personnes travaillant dans les médias, des syndicalistes et des défenseurs des droits de l’homme au cours des 12 mois précédents",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "16.10.1 Nombre de cas avérés de meurtres, d’enlèvements, de disparitions forcées, de détentions arbitraires et d’actes de torture dont ont été victimes des journalistes, des personnes travaillant dans les médias, des syndicalistes et des défenseurs des droits de l’homme au cours des 12 mois précédents",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -3914,9 +3914,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "17.1.1 Total des recettes publiques en proportion du PIB, par source",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "17.1.1 Total des recettes publiques en proportion du PIB, par source",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -3935,9 +3935,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "17.1.2 Proportion du budget national financé par les impôts nationaux",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "17.1.2 Proportion du budget national financé par les impôts nationaux",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -3962,9 +3962,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "17.3.1 Investissements étrangers directs, aide publique au développement et coopération Sud-Sud, en proportion du revenu national brut",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "17.3.1 Investissements étrangers directs, aide publique au développement et coopération Sud-Sud, en proportion du revenu national brut",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -3988,9 +3988,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "17.4.1 Service de la dette en proportion des exportations de biens et services ",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "17.4.1 Service de la dette en proportion des exportations de biens et services ",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -4015,9 +4015,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "17.6.1 Abonnements à une connexion à Internet à haut débit fixe pour 100 habitants, par vitesse de connexion",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "17.6.1 Abonnements à une connexion à Internet à haut débit fixe pour 100 habitants, par vitesse de connexion",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -4042,9 +4042,9 @@
                     "graphique": "Ligne",
                     "indicateurDisponible": "Oui",
                     "indicateur": "17.8.1 Proportion de la population utilisant Internet",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "17.8.1 Proportion de la population utilisant Internet",
+                            "description": "",
                             "unite": "%",
                             "groupe": "",
                             "parametre": "",
@@ -4069,7 +4069,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -4084,9 +4084,9 @@
                     "graphique": "",
                     "indicateurDisponible": "Oui",
                     "indicateur": "17.13.1 Tableau de bord macroéconomique",
-                    "donees": [
+                    "donnees": [
                         {
-                            "description": "17.13.1 Tableau de bord macroéconomique",
+                            "description": "",
                             "unite": "",
                             "groupe": "",
                             "parametre": "",
@@ -4109,7 +4109,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -4124,7 +4124,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }
@@ -4139,7 +4139,7 @@
                     "graphique": "",
                     "indicateurDisponible": "Non",
                     "indicateur": "",
-                    "donees": [],
+                    "donnees": [],
                     "titreGroupe": {},
                     "source": ""
                 }

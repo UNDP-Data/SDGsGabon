@@ -22,7 +22,7 @@ export let id;
 const lineColors = {"Garçons":"#FBC412","Filles":"#D12800","Urbain":"#00C1FF","Rural":"#59BA47"}
 const otherColors = ["#FBC412","#00C1FF","#EE402D"]
 let mounted = false;
-const margin = {"top": 20, "right":100, "bottom":40, "left":70}
+const margin = {"top": 20, "right":40, "bottom":40, "left":70}
 let width, height = 270;
 let gx,gy;
 let maxValue;

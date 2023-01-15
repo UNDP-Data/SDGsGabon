@@ -4,26 +4,17 @@
 export let data;
 export let id;
 export let color;
-export let unit;
 
-//$: console.log('id',id)
-//$: console.log('linechart group data ---- ',data)
-//$: console.log('sets ---',data.map( d => d.groupe))
-
-$: sets = [... new Set(data.map( d => d.groupe))]
-//console.log('sets',sets)
-
-// add title
-// separate the data in sets
+//$: console.log('data',data)
 
 </script>
-{#each sets as set}
-<h5 class="subtitle">{data.filter( k => (k.groupe === set) )[0].description}</h5>
+{#each data as lineData,i}
+<h5 class="subtitle">{lineData.description}</h5>
 	<LineChart
-		data= {data.filter( k => (k.groupe === set))[0].values}
-		id = {id+'_'+set}
+		data= {lineData.values}
+		id = {id+'_'+i}
 		color = {color}
-		unit = {unit}
+		unit = {lineData.unite}
 	>
   	</LineChart>
 {/each}

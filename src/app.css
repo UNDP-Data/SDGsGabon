@@ -123,7 +123,7 @@ h5.subtitle{
     stroke:#ccc;
     stroke-width: 2;
 }
-comparetext{
+.comparetext{
     font-size: 1.2em;
 }
 .titleContainer{
@@ -139,16 +139,20 @@ comparetext{
     padding:20px;
 }
 .datadiv{
+    margin-top: 30px;
     padding-bottom: 20px;
 }
-
+.number-container{
+    padding: 10px;
+    display:flex;
+}
 .yearValue{
     color:#FFF;
     text-align:center;
     padding:10px;
     border-radius: 15px;
     width: fit-content;
-    min-width: 165px;
+    min-width: 200px;
     margin-top: 10px;
 }
 .year{
@@ -256,4 +260,13 @@ svg text{
 }
 .arrow_box_bottom .highlight{
 	color: #FFF;
+}
+@media screen and (min-width: 768px) {
+    .number-container{
+        padding: 0px;
+        display:block;
+    }
+    .yearValue{
+        min-width: 165px;
+    }
 }

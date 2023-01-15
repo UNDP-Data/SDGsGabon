@@ -18,7 +18,7 @@ let yBar, unit;
 
 const barHeight = 30;
 let width = 400, height = 300;
-const margin = {'top':0,'right':110,'bottom':30,'left':170}
+const margin = {'top':30,'right':110,'bottom':30,'left':170}
 const labelWidth = 24;
 let dataFiltered;
 
@@ -38,7 +38,7 @@ $: dataFiltered = data.filter(d => (d.parametre != 'comparer') && d.valeurs[late
 
 $: sets = [... new Set(dataFiltered.map( d => d.groupe))]
 
-$: height = ((barHeight+5) * dataFiltered.length) + sets.length * 30 + margin.bottom; 
+$: height = ((barHeight+5) * dataFiltered.length) + sets.length * 30 + margin.bottom + margin.top; 
 
 $: {
 	compareItems = data.filter(d => d.parametre == 'comparer')
@@ -125,6 +125,6 @@ function createLabel(text){
 				-
 			{/if}
 		</g>
-		<text y="40">An: {latestValue.key}</text>
+		<text y="50">An: {latestValue.key}</text>
 	</svg>
 </div>
