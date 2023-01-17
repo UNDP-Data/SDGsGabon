@@ -113,13 +113,13 @@ function createLabel(text){
 				</line>
 				<text class="comparetext" 
 					x="{hScale(Number(compareValue))-7}" 
-					y="20" style="font-size: 1.3em;"
+					y="20"
 					text-anchor="end"
 					>{compareDescription}
 				</text>
 				<text class="comparetext" 
 					x="{hScale(Number(compareValue))+7}" 
-					y="20" style="font-size: 1.3em;">{compareValue}{unit}
+					y="20">{compareValue}{unit}
 				</text>
 			{:else}
 				-

@@ -1892,8 +1892,8 @@
                         {
                             "description": "Gabon",
                             "unite": "%",
-                            "groupe": "1",
-                            "parametre": "",
+                            "groupe": "",
+                            "parametre": "comparer",
                             "valeurs": {
                                 "2013": "86",
                                 "2017": "86",
@@ -1903,7 +1903,7 @@
                         {
                             "description": "Urbain",
                             "unite": "%",
-                            "groupe": "2",
+                            "groupe": "1",
                             "parametre": "",
                             "valeurs": {
                                 "2013": "94",
@@ -1914,7 +1914,7 @@
                         {
                             "description": "Rural",
                             "unite": "%",
-                            "groupe": "2",
+                            "groupe": "1",
                             "parametre": "",
                             "valeurs": {
                                 "2013": "33",
@@ -1935,7 +1935,7 @@
                         {
                             "description": "Gabon",
                             "unite": "%",
-                            "groupe": "1",
+                            "groupe": "",
                             "parametre": "comparer",
                             "valeurs": {
                                 "2013": "83",
@@ -1945,7 +1945,7 @@
                         {
                             "description": "Urbain",
                             "unite": "%",
-                            "groupe": "2",
+                            "groupe": "1",
                             "parametre": "",
                             "valeurs": {
                                 "2013": "91.5",
@@ -1955,7 +1955,7 @@
                         {
                             "description": "Rural",
                             "unite": "%",
-                            "groupe": "2",
+                            "groupe": "1",
                             "parametre": "",
                             "valeurs": {
                                 "2013": "28.4",
@@ -1965,7 +1965,7 @@
                         {
                             "description": "Chef de ménage homme",
                             "unite": "%",
-                            "groupe": "3",
+                            "groupe": "2",
                             "parametre": "",
                             "valeurs": {
                                 "2013": "85",
@@ -1975,7 +1975,7 @@
                         {
                             "description": "Chef de ménage femme",
                             "unite": "%",
-                            "groupe": "3",
+                            "groupe": "2",
                             "parametre": "",
                             "valeurs": {
                                 "2013": "81.1",

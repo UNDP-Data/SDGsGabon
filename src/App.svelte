@@ -209,6 +209,7 @@ function displayNumberContainer(indicator){
                               data= {indicator.donnees.filter(d => d.parametre != 'cacher')}
                               id = {indicator.codeIndicateur}
                               color = {activeColor}
+                              subtitles= {indicator.titreGroupe}
                             >
                             </MultipleLines>
                           {:else if indicator.graphique == 'GroupeLignesDouble'}

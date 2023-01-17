@@ -7,12 +7,7 @@ export let color;
 export let latestValue;
 export let subtitles;
 
-//$: console.log('id',id)
-//$: console.log('barchart group data ---- ',data)
-//$: console.log('latestValue',latestValue)
-
 $: sets = [... new Set(data.map( d => d.groupe))]
-//$: console.log('sets',sets)
 
 // separate the data in sets
 </script>

@@ -7,31 +7,23 @@
 	import { line } from 'd3-shape';
 	import { onMount } from 'svelte';
 	import Tooltip from './Tooltip.svelte';
-	import {wrapText} from './wrapText.js';
-
-	import IntersectionObserver from "svelte-intersection-observer";
-  	import { fade } from "svelte/transition";
-
     let d3 = { scaleLinear, scaleOrdinal, ascending, format, max, min, extent,select,axisBottom,axisLeft,line} // 
 
 export let data;
 export let id;
 
-//-----
-//console.log('data in lines double',data)
 const lineColors = {"Garçons":"#FBC412","Filles":"#D12800","Urbain":"#00C1FF","Rural":"#59BA47"}
 const otherColors = ["#FBC412","#00C1FF","#EE402D"]
 let mounted = false;
-const margin = {"top": 20, "right":40, "bottom":40, "left":70}
+const margin = {"top": 20, "right":40, "bottom":60, "left":70}
 let width, height = 270;
 let gx,gy;
 let maxValue;
 let maxLineValue, minLineValue;
-//console.log('data lines',data)
+
 $: maxValue=0;
 
 $: data.forEach((lineData) => {
-		// using only years with values for the vis
 		lineData.sortedValues = lineData.values.sort( (a,b) => a.key - b.key )
 		// max
 		maxLineValue = d3.max(lineData.sortedValues, d => Number(d.value))
@@ -52,8 +44,8 @@ $: x = d3.scaleLinear()
 	.domain(domain)
 
 $: y= d3.scaleLinear()
-	.rangeRound([height - margin.top - margin.bottom, 0])
-	.domain([minValue*1.5,maxValue*1.5]);
+	.domain([minValue*1.2,maxValue*1.2]).nice()
+	.rangeRound([height - margin.bottom, margin.top])
 
 $: xAxis = (g, x) => g
 	.call(d3.axisBottom(x)
@@ -65,8 +57,8 @@ $: xAxis = (g, x) => g
 	.call(g => g.select(".domain").remove());
 
 $: path = d3.line()
-            .x(function(d) { return x(d.key) })
-            .y(function(d) { return y(d.value) })
+		.x(d => x(d.key))
+		.y(d => y(d.value))
  
 $: yAxis = (g, y) => g
 	.call(d3.axisLeft(y)
@@ -74,7 +66,7 @@ $: yAxis = (g, y) => g
 			.tickPadding(30)
 			.tickSize(- width + margin.right + margin.left)
 			.tickFormat(d => d + data[0].unite)
-			.ticks(3)
+			.ticks(5)
 		)
 	.call(g => g.select(".domain").remove());
 
@@ -108,7 +100,7 @@ function displaySubtitle(dataSet){
 	<h5 class="subtitle">{@html displaySubtitle(data)}</h5>
 	<svg height="{height}" width="{width}">
 		<g transform="translate({margin.left},{margin.top})">
-			<g transform="translate(0, {height-margin.top-margin.bottom})" class="xAxis" fill="none" font-size="10" text-anchor="middle">
+			<g transform="translate(0, {height-margin.bottom})" class="xAxis" fill="none" font-size="10" text-anchor="middle">
 			</g>
 			<g class="yAxis" fill="none" font-size="10" text-anchor="end"></g>
 			{#each data as lineData,j}
