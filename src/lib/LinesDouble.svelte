@@ -1,13 +1,12 @@
 <script>
-    import { scaleLinear, scaleOrdinal } from 'd3-scale';
-	import { ascending, max, min, extent } from 'd3-array';
-	import { format } from 'd3-format';
+    import { scaleLinear} from 'd3-scale';
+	import { max, min, extent } from 'd3-array';
 	import { select } from 'd3-selection'; 
 	import { axisBottom, axisLeft } from 'd3-axis';
 	import { line } from 'd3-shape';
 	import { onMount } from 'svelte';
 	import Tooltip from './Tooltip.svelte';
-    let d3 = { scaleLinear, scaleOrdinal, ascending, format, max, min, extent,select,axisBottom,axisLeft,line} // 
+    let d3 = { scaleLinear, max, min, extent, select, axisBottom, axisLeft,line} // 
 
 export let data;
 export let id;
@@ -15,8 +14,10 @@ export let id;
 const lineColors = {"Garçons":"#FBC412","Filles":"#D12800","Urbain":"#00C1FF","Rural":"#59BA47"}
 const otherColors = ["#FBC412","#00C1FF","#EE402D"]
 let mounted = false;
+
 const margin = {"top": 20, "right":40, "bottom":60, "left":70}
 let width, height = 270;
+let offset = 15;
 let gx,gy;
 let maxValue;
 let maxLineValue, minLineValue;
@@ -24,23 +25,22 @@ let maxLineValue, minLineValue;
 $: maxValue=0;
 
 $: data.forEach((lineData) => {
-		lineData.sortedValues = lineData.values.sort( (a,b) => a.key - b.key )
 		// max
-		maxLineValue = d3.max(lineData.sortedValues, d => Number(d.value))
+		maxLineValue = d3.max(lineData.values, d => Number(d.value))
 		maxValue = (maxLineValue > maxValue)?maxLineValue:maxValue;
 		// min
-		minLineValue = d3.min(lineData.sortedValues, d => Number(d.value))
+		minLineValue = d3.min(lineData.values, d => Number(d.value))
 		minValue = (minLineValue < minValue)?minLineValue:minValue;
 
 	})
 // assuming for the domain that the years with data
 // are the same for both lines
-$: domain = d3.extent(data[0].sortedValues, d =>  Number(d.key))
+$: domain = d3.extent(data[0].values, d =>  Number(d.key))
 
 $: minValue = (minValue < 0)?minValue:0;
 
 $: x = d3.scaleLinear()
-	.range([0, width -  margin.right - margin.left])
+	.range([offset, width -  margin.right - margin.left - offset])
 	.domain(domain)
 
 $: y= d3.scaleLinear()
@@ -51,7 +51,7 @@ $: xAxis = (g, x) => g
 	.call(d3.axisBottom(x)
 		.tickSize(6)
 		.tickPadding(7)
-		.tickValues(data[0].sortedValues.map(d => d.key))
+		.tickValues(data[0].values.map(d => d.key))
 		.tickFormat(d=> d.toFixed(0))
 	)
 	.call(g => g.select(".domain").remove());
@@ -104,8 +104,8 @@ function displaySubtitle(dataSet){
 			</g>
 			<g class="yAxis" fill="none" font-size="10" text-anchor="end"></g>
 			{#each data as lineData,j}
-				<path fill="none" stroke="{findColor(lineData.description,j)}" opacity=".7" stroke-width="1.5" d={path(lineData.sortedValues)}></path>
-				{#each lineData.sortedValues as dot, i}
+				<path fill="none" stroke="{findColor(lineData.description,j)}" opacity=".7" stroke-width="1.5" d={path(lineData.values)}></path>
+				{#each lineData.values as dot, i}
 				<g transform="translate({x(Number(dot.key))},{y(Number(dot.value))})">
 					<Tooltip
 						content = {lineData.description+": "+dot.value+data[j].unite}

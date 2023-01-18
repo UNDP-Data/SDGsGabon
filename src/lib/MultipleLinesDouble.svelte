@@ -5,7 +5,7 @@ export let data;
 export let id;
 
 $: sets = [... new Set(data.filter(d => d.parametre != "comparer").map(d =>  d.groupe))]
-//$: console.log('sets',sets)
+
 </script>
 {#each sets as set}
 	<LinesDouble

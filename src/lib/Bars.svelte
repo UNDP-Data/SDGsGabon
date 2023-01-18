@@ -1,11 +1,10 @@
 <script>
-    import { scaleLinear, scaleOrdinal } from 'd3-scale';
-	import { descending,max } from 'd3-array';
-	import { format } from 'd3-format';
+    import { scaleLinear} from 'd3-scale';
+	import { max } from 'd3-array';
 	import {wrapText} from './wrapText.js';
-	import BarRect from './BarRect.svelte';
+//	import BarRect from './BarRect.svelte';
 
-    let d3 = { scaleLinear, scaleOrdinal, descending, format, max} // 
+    let d3 = { scaleLinear, max} // 
 
 export let data;
 export let id;
@@ -22,11 +21,7 @@ const margin = {'top':30,'right':110,'bottom':30,'left':170}
 const labelWidth = 24;
 let dataFiltered;
 
-//$: console.log('id',id, id.replaceAll('.','-'))
-//$: console.log('barchart data ---- ',data)
-//$: console.log('latestValue',latestValue)
 $: yBar = 15;
-//console.log('latestValue',latestValue)
 
 function yPosition(i){
 	// check in data if not first element, if set is different from previous add additional pixels
@@ -42,7 +37,6 @@ $: height = ((barHeight+5) * dataFiltered.length) + sets.length * 30 + margin.bo
 
 $: {
 	compareItems = data.filter(d => d.parametre == 'comparer')
-	//console.log('compareItems',compareItems)
 	if (compareItems.length > 0) {
 		compareValue = compareItems[0].valeurs[latestValue.key];
 		compareDescription = compareItems[0].description;

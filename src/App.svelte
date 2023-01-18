@@ -2,7 +2,7 @@
   import { onMount} from 'svelte';
   import { csv, json } from "d3-fetch";
   import { select} from 'd3-selection'; 
-  import { descending } from 'd3-array';
+  import { ascending } from 'd3-array';
   import Bars from './lib/Bars.svelte';
   import MultipleBars from './lib/MultipleBars.svelte';
   import LineChart from './lib/LineChart.svelte';
@@ -14,16 +14,16 @@
   //import sdgDataJson from './assets/GabonOddDonneesTest.json';
   //import sdgDataJson from './assets/GabonOddDonnees.json';
 
-
 let dataLoaded =false;
 let isOpen= false;
-let d3 = {csv, json, select, descending};
+let d3 = {csv, json, select, ascending};
 let sdgs, sdgDataJson;
 let tooltip, imageCode, activeColor;
 
 const dataUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/GabonOddDonnees.json';
 const sdgsUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/ODDs.csv';
 
+// ---- test repository -----
 //const dataUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-dataTest/main/GabonOddDonnees.json'; /// test version!!!
 //const sdgsUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-dataTest/main/ODDs.csv'; /// test version!!!
 
@@ -56,7 +56,7 @@ const getData = async() => {
               for (const [key, value] of Object.entries(data.valeurs)) {
                   if (!isNaN(key)) values.push({'key':Number(key),'value':value })
               }
-              data.values = values.filter(d => d.value != "");
+              data.values = values.filter(d => d.value != "").sort((a,b) => d3.ascending(a.key, b.key));
             })
           })
       })
@@ -65,37 +65,16 @@ const getData = async() => {
   .catch(function(err) {
     alert("Une erreur s'est produite lors du chargement des fichiers, veuillez vérifier la syntaxe du fichier JSON", err)
   });
-  dataLoaded =true;
+  dataLoaded = true;
 }
 
-function displayLatestValue(indicator) {
-  //console.log('d in display latest value',indicator)
-  let dataFirst = indicator.donnees[0] 
-  let yearsData = dataFirst.valeurs; /// using first value
-  let values = []
-  for (const [key, value] of Object.entries(yearsData)) {
-            if (!isNaN(key)) values.push({'key':Number(key),'value':value })
-        }
-  if (values.length === 0) return {key:'-',value:'no value yet'};
-  else {
-    values.sort((a,b) => d3.descending(a.key, b.key))
-    let value = values.find( d => d.value  !="")
-    if (value != undefined) return value;
-    else return {key:'-',value:'-'};
-  }
-}
-function latestNumber(indicator){
-   //console.log('in latest Number',indicator)
-  // sorting values and using first not empty item
-    indicator.donnees[0].values.sort((a,b) => d3.descending(a.key, b.key))
-    let value = indicator.donnees[0].values.find( d => d.value  !="")
-    return value;
+function latestValue(indicator) {
+  let yearsData = indicator.donnees[0].values; /// using first value
+  return yearsData[yearsData.length-1];
 }
 
 function displayNumberContainer(indicator){
-  //console.log('indicator chart --------',indicator)
   if (indicator.graphique == 'Bandes'){
-    //console.log('comparer',indicator.donnees.some(d => d.parametre === 'comparer'))
     return indicator.donnees.some(d => d.parametre === 'comparer');
   }
   else if (indicator.graphique == "GroupeBarres" || indicator.graphique == "GroupeLignes" || indicator.graphique == 'GroupeLignesDouble' || indicator.graphique == 'Liste'){
@@ -172,8 +151,8 @@ function displayNumberContainer(indicator){
                       <div class="col-xs-12 col-md-4 number-container justify-content-center">
                         {#if displayNumberContainer(indicator)}
                           <div class="yearValue" style="background-color: {activeColor};">
-                            <div class="year">{displayLatestValue(indicator)['key']}</div>
-                            <div class="{(displayLatestValue(indicator)['value'].toString().length < 6)?'value':'longValue'}">{displayLatestValue(indicator)['value']}{indicator.donnees[0].unite}</div>
+                            <div class="year">{latestValue(indicator)['key']}</div>
+                            <div class="{(latestValue(indicator)['value'].toString().length < 6)?'value':'longValue'}">{latestValue(indicator)['value']}{indicator.donnees[0].unite}</div>
                           </div>
                           {/if}
                       </div>
@@ -186,14 +165,14 @@ function displayNumberContainer(indicator){
                               data={indicator.donnees.filter(d => d.parametre != 'cacher')}
                               id = {indicator.codeIndicateur}
                               color = {activeColor}
-                              latestValue={latestNumber(indicator)}
+                              latestValue={latestValue(indicator)}
                             ></Bars>
                           {:else if indicator.graphique == 'GroupeBarres'}
                             <MultipleBars 
                               data={indicator.donnees.filter(d => d.parametre != 'cacher')}
                               id = {indicator.codeIndicateur}
                               color = {activeColor}
-                              latestValue={latestNumber(indicator)}
+                              latestValue={latestValue(indicator)}
                               subtitles= {indicator.titreGroupe}
                               ></MultipleBars>
                           {:else if indicator.graphique == 'Ligne'}

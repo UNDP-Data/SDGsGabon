@@ -19,7 +19,7 @@ h5.subtitle{
 h5.subtitle2{
     font-size: 1.1em;
 }
-.subtitle{
+.subtitle, .subtitle2{
     margin-top:30px;
 }
 .sdg{
