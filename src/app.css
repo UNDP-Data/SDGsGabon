@@ -22,6 +22,9 @@ h5.subtitle2{
 .subtitle, .subtitle2{
     margin-top:30px;
 }
+.alert-warning{
+    margin-top: 30px;
+}
 .sdg{
     box-shadow: -2px -2px 5px 1px rgba(184,184,184,0.71);
     -webkit-box-shadow: -2px -2px 5px 1px rgba(184,184,184,0.71);
@@ -73,6 +76,8 @@ h5.subtitle2{
 .dropdown-menu{
     padding:0px;
     border-radius: 0px;
+    max-height: 470px;
+    overflow-y: auto;
     box-shadow: -2px 1px 5px 1px rgba(184,184,184,0.71);
     -webkit-box-shadow: -2px 1px 5px 1px rgba(184,184,184,0.71);
     -moz-box-shadow: -2px 1px 5px 1px rgba(184,184,184,0.71);
@@ -104,6 +109,9 @@ h5.subtitle2{
 .sdgcontainer{
     padding:10px 30px;
 }
+.titleContainer{
+    display:flex; 
+}
 .sdgIcon{
     padding-top: 12px;
     height: 120px;
@@ -111,21 +119,12 @@ h5.subtitle2{
 }
 .sdg-title h2{
     padding-left:20px;
-    padding-right:10px;
+    margin-top: 10px;
     font-weight: 400;
     font-size:1.6em;
 }
 .source{
     font-weight: 500;
-}
-.compareline{
-    stroke:#ccc;
-    stroke-width: 2;
-}
-
-.titleContainer{
-    display:flex; 
-    align-items:center;
 }
 .indicator{
     margin-top: 10px;
@@ -204,6 +203,10 @@ svg text{
 }
 .bar{
     opacity: .5;
+}
+.compareline{
+    stroke: var(--gray-500);
+    stroke-width: 2;
 }
 .list{
     margin-top:30px;

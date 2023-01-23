@@ -4,7 +4,7 @@
 	import {wrapText} from './wrapText.js';
 //	import BarRect from './BarRect.svelte';
 
-    let d3 = { scaleLinear, max} // 
+    let d3 = { scaleLinear, max};
 
 export let data;
 export let id;

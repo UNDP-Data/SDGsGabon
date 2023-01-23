@@ -27,7 +27,9 @@ const sdgsUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main
 //const dataUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-dataTest/main/GabonOddDonnees.json'; /// test version!!!
 //const sdgsUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-dataTest/main/ODDs.csv'; /// test version!!!
 
-const sdgColors = { 'sdg_1': '#e5243b', 'sdg_2': '#dda63a','sdg_3': '#4c9f38','sdg_4':'#c5192d','sdg_5' : ' #ff3a21','sdg_6' : ' #26bde2','sdg_7' : '#fcc30b','sdg_8' : '#a21942','sdg_9' : '#fd6925','sdg_10' : '#dd1367','sdg_11' : '#fd9d24','sdg_12' : '#bf8b2e','sdg_13' : '#3f7e44','sdg_14' : '#0a97d9','sdg_15' : '#56c02b','sdg_16' : '#00689d','sdg_17' : '#19486a'}
+const sdgColors = { 'sdg_1': '#e5243b', 'sdg_2': '#dda63a','sdg_3': '#4c9f38','sdg_4':'#c5192d','sdg_5' : ' #ff3a21','sdg_6' : ' #26bde2','sdg_7' : '#fcc30b','sdg_8' : '#a21942','sdg_9' : '#fd6925','sdg_10' : '#dd1367','sdg_11' : '#fd9d24','sdg_12' : '#bf8b2e','sdg_13' : '#3f7e44','sdg_14' : '#0a97d9','sdg_15' : '#56c02b','sdg_16' : '#00689d','sdg_17' : '#19486a'};
+const chartNames = ['Bandes','GroupeBarres','Ligne','GroupeLignes','GroupeLignesDouble','Liste',''];
+const parametreNames = ['comparer','cacher',''];
 
 let activeSDG = '1';
 $: {
@@ -51,13 +53,16 @@ const getData = async() => {
     for (const key in sdgDataJson){
       sdgDataJson[key].forEach(target => {
           target.indicateurs.forEach(indicator =>{
+            let dataMessage = "";
             indicator.donnees.forEach(data => {
-              let values =[]
+              let values =[];
+              if (!parametreNames.includes(data.parametre))dataMessage = dataMessage + ` parametre ${data.parametre} does not exist, `;
               for (const [key, value] of Object.entries(data.valeurs)) {
                   if (!isNaN(key)) values.push({'key':Number(key),'value':value })
               }
               data.values = values.filter(d => d.value != "").sort((a,b) => d3.ascending(a.key, b.key));
             })
+            indicator.message = dataMessage;
           })
       })
     }
@@ -89,7 +94,7 @@ function displayNumberContainer(indicator){
 	<div class="container">
 		<header>
 			<h1 class="main-title">Objectifs de Développement Durable au Gabon</h1>
-			<Dropdown {isOpen} toggle={() => (isOpen = !isOpen)} size="lg">Sélectionnez ODD
+      <Dropdown {isOpen} toggle={() => (isOpen = !isOpen)} size="lg">Sélectionnez ODD
         <DropdownToggle class="undp-select">
 					<span class="selectedSDG">{ sdgs.filter(d => d.code == activeSDG)[0].nomCourt }<span>
         </DropdownToggle>
@@ -146,6 +151,7 @@ function displayNumberContainer(indicator){
                           >
                         <span class="source" style="border-bottom: 2px solid {activeColor};"><br>(Source)</span>
                         </Tooltip>
+                        <div class="alert alert-warning" style="display:{(!chartNames.includes(indicator.graphique))?'block':'none'}">{indicator.graphique} at indicator {indicator.codeIndicateur} does not exist</div>
                       </div>
                       <!--- LATEST YEAR VALUE -->
                       <div class="col-xs-12 col-md-4 number-container justify-content-center">
@@ -160,6 +166,7 @@ function displayNumberContainer(indicator){
                     <div class="row">
                       <div class="col-xs-12 col-md-12 col-lg-8">
                             <!---- charts -->
+                            <div class="alert alert-warning" style="display:{(indicator.message != "")?'block':'none'}">{indicator.message}</div>
                             {#if indicator.graphique == 'Bandes'}
                             <Bars 
                               data={indicator.donnees.filter(d => d.parametre != 'cacher')}
