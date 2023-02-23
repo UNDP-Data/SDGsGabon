@@ -92,26 +92,27 @@ function displayNumberContainer(indicator){
 {#if dataLoaded}
 <main>
 	<div class="container">
-		<header>
-			<h1 class="main-title">Objectifs de Développement Durable au Gabon</h1>
-      <Dropdown {isOpen} toggle={() => (isOpen = !isOpen)} size="lg">Sélectionnez ODD
-        <DropdownToggle class="undp-select">
-					<span class="selectedSDG">{ sdgs.filter(d => d.code == activeSDG)[0].nomCourt }<span>
-        </DropdownToggle>
-				<DropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-					{#each sdgs as option}
-						<DropdownItem on:click={() =>{activeSDG = option.code; }}>
-                <div class="dropdownId" style="background: {`${sdgColors['sdg_'+option.code]}`}">
-                  {option.code}
-                </div>
-                <div class="dropdownName" >
-                  {option.nomCourt}
-                </div>
-            </DropdownItem>
-					{/each}
-          </DropdownMenu>
-			</Dropdown>
-		</header>
+		<div class="row">
+      <div class="col">
+        <Dropdown {isOpen} toggle={() => (isOpen = !isOpen)} size="lg">Sélectionnez ODD
+          <DropdownToggle class="undp-select">
+            <span class="selectedSDG">{ sdgs.filter(d => d.code == activeSDG)[0].nomCourt }<span>
+          </DropdownToggle>
+          <DropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {#each sdgs as option}
+              <DropdownItem on:click={() =>{activeSDG = option.code; }}>
+                  <div class="dropdownId" style="background: {`${sdgColors['sdg_'+option.code]}`}">
+                    {option.code}
+                  </div>
+                  <div class="dropdownName" >
+                    {option.nomCourt}
+                  </div>
+              </DropdownItem>
+            {/each}
+            </DropdownMenu>
+        </Dropdown>
+      </div>
+    </div>
 		<div id="sdg-list">
       <div class="row sdg{activeSDG} sdg">
         <div class="col">
