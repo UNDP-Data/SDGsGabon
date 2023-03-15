@@ -24,8 +24,8 @@ let tooltip, imageCode, activeColor;
 // const sdgsUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-data/main/ODDs.csv';
 
 // ---- test repository -----
-const dataUrl = 'https://raw.githubusercontent.com/Dgstat01/SDGsGabon-dataTest/main/GabonOddDonnees.json'; /// test version!!!
-const sdgsUrl = 'https://raw.githubusercontent.com/Dgstat01/SDGsGabon-dataTest/main/ODDs.csv'; /// test version!!!
+const dataUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-dataTest/main/GabonOddDonnees.json'; /// test version!!!
+const sdgsUrl = 'https://raw.githubusercontent.com/UNDP-Data/SDGsGabon-dataTest/main/ODDs.csv'; /// test version!!!
 
 const sdgColors = { 'sdg_1': '#e5243b', 'sdg_2': '#dda63a','sdg_3': '#4c9f38','sdg_4':'#c5192d','sdg_5' : ' #ff3a21','sdg_6' : ' #26bde2','sdg_7' : '#fcc30b','sdg_8' : '#a21942','sdg_9' : '#fd6925','sdg_10' : '#dd1367','sdg_11' : '#fd9d24','sdg_12' : '#bf8b2e','sdg_13' : '#3f7e44','sdg_14' : '#0a97d9','sdg_15' : '#56c02b','sdg_16' : '#00689d','sdg_17' : '#19486a'};
 const chartNames = ['Bandes','GroupeBarres','Ligne','GroupeLignes','GroupeLignesDouble','Liste',''];
